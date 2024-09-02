@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://drinprblemj5u"]
+[gd_scene load_steps=28 format=4 uid="uid://drinprblemj5u"]
 
 [ext_resource type="Script" path="res://vehicles/vehicle.gd" id="1_wetfm"]
 [ext_resource type="ArrayMesh" uid="uid://bqrwin8ccgptt" path="res://vehicles/meshes/wheel.res" id="2_q28iu"]
@@ -150,10 +150,26 @@ size = Vector3(1.24025, 1.12246, 4.19928)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm6ts"]
 size = Vector3(1.24025, 0.429309, 1.85267)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vtqt7"]
+properties/0/path = NodePath("Body:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Body:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Trailer:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Trailer:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [node name="TrailerTruck" type="Node3D"]
+transform = Transform3D(0.0185169, 0, -0.999829, 0, 1, 0, 0.999829, 0, 0.0185169, 0, 2.23274, -1.56085)
 
 [node name="Body" type="VehicleBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
+collision_mask = 2
 center_of_mass_mode = 1
 script = ExtResource("1_wetfm")
 
@@ -232,19 +248,6 @@ shape = SubResource("BoxShape3D_isu5t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000307977, 0.157564, -0.780767)
 shape = SubResource("BoxShape3D_tbnf0")
 
-[node name="CameraBase" type="Node3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97449, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Body/CameraBase"]
-transform = Transform3D(0.560672, -0.476692, 0.67706, 0, 0.817669, 0.575689, -0.828038, -0.322773, 0.458444, 3.17413, 0.914613, 1.8828)
-current = true
-fov = 74.0
-near = 0.1
-script = ExtResource("4_4yhuf")
-min_distance = 5.0
-max_distance = 7.0
-height = 2.5
-
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00169557, -0.222867, 0.0955184)
 stream = ExtResource("6_r21ue")
@@ -291,8 +294,22 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9
 [node name="TopDownCameraPosition" type="Marker3D" parent="Body"]
 transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0.00169557, 15.7771, 0.0955178)
 
+[node name="CameraBase" type="Node3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97449, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Body/CameraBase"]
+transform = Transform3D(0.560672, -0.476692, 0.67706, 0, 0.817669, 0.575689, -0.828038, -0.322773, 0.458444, 3.17413, 0.914613, 1.8828)
+current = true
+fov = 74.0
+near = 0.1
+script = ExtResource("4_4yhuf")
+min_distance = 5.0
+max_distance = 7.0
+height = 2.5
+
 [node name="Trailer" type="VehicleBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.637902, -2.78118)
+collision_mask = 2
 center_of_mass_mode = 1
 
 [node name="TWheel1" type="VehicleWheel3D" parent="Trailer"]
@@ -384,3 +401,6 @@ angular_limit_x/upper_angle = 0.785398
 angular_limit_x/lower_angle = -0.785398
 angular_limit_y/upper_angle = 1.22173
 angular_limit_y/lower_angle = -1.22173
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vtqt7")

@@ -34,10 +34,17 @@ enum CameraType {
 }
 
 func _ready() -> void:
+	
+	if not is_multiplayer_authority(): 
+		queue_free() 
+		return
+	current= true;
 	update_camera()
 
-
-func _input(event: InputEvent) -> void:
+func _enter_tree() -> void:
+	set_multiplayer_authority($"../../..".name.to_int())
+	
+func _input(_event: InputEvent) -> void:
 	pass
 	#if event.is_action_pressed(&"cycle_camera"):
 		#camera_type = wrapi(camera_type + 1, 0, CameraType.MAX) as CameraType
@@ -45,6 +52,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if not is_multiplayer_authority(): return
+
 	if camera_type == CameraType.EXTERIOR:
 		var target: Vector3 = get_parent().global_transform.origin
 		var pos := global_transform.origin

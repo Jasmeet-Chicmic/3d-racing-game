@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1uai3rvx8hul"]
+[gd_scene load_steps=20 format=3 uid="uid://c1uai3rvx8hul"]
 
 [ext_resource type="Script" path="res://vehicles/vehicle.gd" id="1_r806m"]
 [ext_resource type="Texture2D" uid="uid://d4ostmqwgytk" path="res://vehicles/particle_smoke.png" id="2_1gkvk"]
@@ -51,10 +51,20 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_p5xtl"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6onp8"]
+properties/0/path = NodePath("Body:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Body:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="CarBase" type="Node3D"]
+transform = Transform3D(-0.067371, 0, 0.997728, 0, 1, 0, -0.997728, 0, -0.067371, -0.467857, 2.05084, 2.82896)
 
 [node name="Body" type="VehicleBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_l7i2k")
 center_of_mass_mode = 1
 script = ExtResource("1_r806m")
@@ -182,3 +192,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9
 
 [node name="TopDownCameraPosition" type="Marker3D" parent="Body"]
 transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 0.00169557, 15.7771, 0.0955178)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6onp8")
