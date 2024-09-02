@@ -150,7 +150,7 @@ size = Vector3(1.24025, 1.12246, 4.19928)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm6ts"]
 size = Vector3(1.24025, 0.429309, 1.85267)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vtqt7"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wi8nx"]
 properties/0/path = NodePath("Body:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
@@ -166,12 +166,12 @@ properties/3/replication_mode = 1
 
 [node name="TrailerTruck" type="Node3D"]
 transform = Transform3D(0.0185169, 0, -0.999829, 0, 1, 0, 0.999829, 0, 0.0185169, 0, 2.23274, -1.56085)
+script = ExtResource("1_wetfm")
 
 [node name="Body" type="VehicleBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
 collision_mask = 2
 center_of_mass_mode = 1
-script = ExtResource("1_wetfm")
 
 [node name="Wheel1" type="VehicleWheel3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573678, 0.000773743, 1.10416)
@@ -403,4 +403,4 @@ angular_limit_y/upper_angle = 1.22173
 angular_limit_y/lower_angle = -1.22173
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_vtqt7")
+replication_config = SubResource("SceneReplicationConfig_wi8nx")

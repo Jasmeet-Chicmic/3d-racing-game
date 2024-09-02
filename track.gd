@@ -7,7 +7,6 @@ extends Node3D
 var truck:PackedScene = preload("res://vehicles/trailer_truck.tscn")
 
 const PORT = 9999;
-var enet_peer = ENetMultiplayerPeer.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,20 +19,21 @@ func _process(_delta: float) -> void:
 
 
 func _on_host_pressed() -> void:
-	
+	var enet_peer = ENetMultiplayerPeer.new()
+
 	enet_peer.create_server(PORT);
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(addPlayer)
-	
 	addPlayer(multiplayer.get_unique_id())
 
 func addPlayer(uniqueId:int)->void :
 	main_menu.hide()
 	var truckNode = truck.instantiate();
 	truckNode.name =  str(uniqueId);
-	add_child(truckNode)
+	$"Node3D".add_child(truckNode)
 	
 func _on_join_pressed() -> void:
+	var enet_peer = ENetMultiplayerPeer.new()
 	main_menu.hide()
 	enet_peer.create_client("localhost",PORT);
 	multiplayer.multiplayer_peer = enet_peer

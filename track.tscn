@@ -80,9 +80,12 @@ layout_mode = 2
 placeholder_text = "Room id"
 alignment = 1
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." index="4"]
+[node name="Node3D" type="Node3D" parent="." index="4"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." index="5"]
 _spawnable_scenes = PackedStringArray("res://vehicles/trailer_truck.tscn")
-spawn_path = NodePath("..")
+spawn_path = NodePath("../Node3D")
+spawn_limit = 1
 
 [connection signal="pressed" from="CanvasLayer/MainContainer/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainContainer/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
