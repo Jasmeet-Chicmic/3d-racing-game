@@ -13,9 +13,13 @@ var _steer_target = 0.0
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
-func _physics_process(delta: float) -> void:
+
+func _ready() -> void:
+	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	
-	if is_multiplayer_authority():
+@rpc("any_peer","call_local")
+func moveCar(delta):
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		_steer_target = Input.get_axis(&"right", &"left")
 		
 		_steer_target *= STEER_LIMIT
@@ -73,3 +77,7 @@ func _physics_process(delta: float) -> void:
 		body.steering = move_toward(body.steering, _steer_target, STEER_SPEED * delta)
 		
 		previous_speed =body.linear_velocity.length()
+func _physics_process(delta: float) -> void:
+	
+	# if is_multiplayer_authority():
+	moveCar.rpc(delta)

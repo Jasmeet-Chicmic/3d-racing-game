@@ -1,40 +1,12 @@
 extends Node3D
 
-
-@onready var main_menu = $CanvasLayer/MainContainer
-@onready var canvas_layer = $CanvasLayer
-@onready var line_edit = $CanvasLayer/MainContainer/MarginContainer/VBoxContainer/LineEdit
-var truck:PackedScene = preload("res://vehicles/trailer_truck.tscn")
-
-const PORT = 9999;
+@onready var vehicle:PackedScene = preload("res://vehicles/car_base.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
-
-func _on_host_pressed() -> void:
-	var enet_peer = ENetMultiplayerPeer.new()
-
-	enet_peer.create_server(PORT);
-	multiplayer.multiplayer_peer = enet_peer
-	multiplayer.peer_connected.connect(addPlayer)
-	addPlayer(multiplayer.get_unique_id())
-
-func addPlayer(uniqueId:int)->void :
-	main_menu.hide()
-	var truckNode = truck.instantiate();
-	truckNode.name =  str(uniqueId);
-	$"Node3D".add_child(truckNode)
+	print(GameManager.Players)
+	for player in GameManager.Players:
+		var vehicleScene = vehicle.instantiate();
+		vehicleScene.name = str(player);
+		$Players.add_child(vehicleScene)
+		
 	
-func _on_join_pressed() -> void:
-	var enet_peer = ENetMultiplayerPeer.new()
-	main_menu.hide()
-	enet_peer.create_client("localhost",PORT);
-	multiplayer.multiplayer_peer = enet_peer
-	 # Replace with function body.

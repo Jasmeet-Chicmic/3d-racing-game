@@ -34,15 +34,13 @@ enum CameraType {
 }
 
 func _ready() -> void:
-	
-	if not is_multiplayer_authority(): 
+	if $"../../../MultiplayerSynchronizer".get_multiplayer_authority() != multiplayer.get_unique_id():
 		queue_free() 
 		return
-	current= true;
 	update_camera()
 
 func _enter_tree() -> void:
-	set_multiplayer_authority($"../../..".name.to_int())
+	pass
 	
 func _input(_event: InputEvent) -> void:
 	pass
@@ -52,39 +50,39 @@ func _input(_event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not is_multiplayer_authority(): return
+	# if not is_multiplayer_authority(): return
+	if $"../../../MultiplayerSynchronizer".get_multiplayer_authority() == multiplayer.get_unique_id():
+		if camera_type == CameraType.EXTERIOR:
+			var target: Vector3 = get_parent().global_transform.origin
+			var pos := global_transform.origin
 
-	if camera_type == CameraType.EXTERIOR:
-		var target: Vector3 = get_parent().global_transform.origin
-		var pos := global_transform.origin
+			var from_target := pos - target
 
-		var from_target := pos - target
+			# Check ranges.
+			if from_target.length() < min_distance:
+				from_target = from_target.normalized() * min_distance
+			elif from_target.length() > max_distance:
+				from_target = from_target.normalized() * max_distance
 
-		# Check ranges.
-		if from_target.length() < min_distance:
-			from_target = from_target.normalized() * min_distance
-		elif from_target.length() > max_distance:
-			from_target = from_target.normalized() * max_distance
+			from_target.y = height
 
-		from_target.y = height
+			pos = target + from_target
 
-		pos = target + from_target
+			look_at_from_position(pos, target, Vector3.UP)
+		elif camera_type == CameraType.TOP_DOWN:
+			position.x = get_parent().global_transform.origin.x
+			position.z = get_parent().global_transform.origin.z
+			# Force rotation to prevent camera from being slanted after switching cameras while on a slope.
+			rotation_degrees = Vector3(270, 180, 0)
 
-		look_at_from_position(pos, target, Vector3.UP)
-	elif camera_type == CameraType.TOP_DOWN:
-		position.x = get_parent().global_transform.origin.x
-		position.z = get_parent().global_transform.origin.z
-		# Force rotation to prevent camera from being slanted after switching cameras while on a slope.
-		rotation_degrees = Vector3(270, 180, 0)
+		# Dynamic field of view based on car speed, with smoothing to prevent sudden changes on impact.
+		desired_fov = clamp(base_fov + (abs(global_position.length() - previous_position.length()) - FOV_CHANGE_MIN_SPEED) * FOV_SPEED_FACTOR, base_fov, 100)
+		fov = lerpf(fov, desired_fov, FOV_SMOOTH_FACTOR)
 
-	# Dynamic field of view based on car speed, with smoothing to prevent sudden changes on impact.
-	desired_fov = clamp(base_fov + (abs(global_position.length() - previous_position.length()) - FOV_CHANGE_MIN_SPEED) * FOV_SPEED_FACTOR, base_fov, 100)
-	fov = lerpf(fov, desired_fov, FOV_SMOOTH_FACTOR)
+		# Turn a little up or down
+		transform.basis = Basis(transform.basis[0], deg_to_rad(angle_v_adjust)) * transform.basis
 
-	# Turn a little up or down
-	transform.basis = Basis(transform.basis[0], deg_to_rad(angle_v_adjust)) * transform.basis
-
-	previous_position = global_position
+		previous_position = global_position
 
 
 func update_camera() -> void:
