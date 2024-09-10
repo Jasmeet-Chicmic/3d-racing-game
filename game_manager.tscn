@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://v1wsnv8vrbom"]
+
+[ext_resource type="Script" path="res://game_manager.gd" id="1_5vcq5"]
+[ext_resource type="PackedScene" uid="uid://y05np6685tun" path="res://test scene.tscn" id="2_kd3lc"]
+[ext_resource type="PackedScene" uid="uid://dpu5dr6vhqyqi" path="res://track.tscn" id="2_tvhnu"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_5vcq5")
+multiplayerScene = ExtResource("2_tvhnu")
+
+[node name="UI" parent="." instance=ExtResource("2_kd3lc")]
+
+[node name="MultiplayerScene" type="Node3D" parent="."]
