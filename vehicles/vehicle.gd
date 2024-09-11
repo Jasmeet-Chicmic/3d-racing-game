@@ -1,10 +1,10 @@
 extends Node3D
 
 const STEER_SPEED = 1.5
-const STEER_LIMIT = 0.4
+const STEER_LIMIT = 0.9
 const BRAKE_STRENGTH = 2.0
 @onready var body = $Body;
-@export var engineValue := 40.0
+@export var engineValue := 140.0
 #@export var body:VehicleBody3D;
 @onready var previous_speed = body.linear_velocity.length()
 var _steer_target = 0.0

@@ -10,30 +10,30 @@ signal OnStartGame()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	client=Nakama.create_client("defaultkey",'127.0.0.1',7350,'http')
+	client=Nakama.create_client("defaultkey",'192.180.0.29',7350,'http')
 	pass
 
 func updateUserInfo(username, displayname, avatarurl="", language="en", location="us", timezone="est"):
 	await client.update_account_async(session, username, displayname, avatarurl, language, location, timezone)
 
 func onSocketConnected():
-	print("Socket Connected")
+	#print("Socket Connected")
 	pass
 
 func onSocketClosed():
-	print("Socket Closed")
+	#print("Socket Closed")
 	pass
 	
 func onSocketReceivedError():
-	print("Socket Received Error")
+	#print("Socket Received Error")
 	pass
 
 func onSocketReceivedMatchPresence(presence:NakamaRTAPI.MatchPresenceEvent):
-	print("Socket Received Match Presence", presence) 
+	#print("Socket Received Match Presence", presence) 
 	pass
 
 func onSocketReceivedMatchState(state:NakamaRTAPI.MatchData):
-	print("<====Socket Received Match State===>", state, "<==========Session====>", session)
+	#print("<====Socket Received Match State===>", state, "<==========Session====>", session)
 	pass
 
 func _process(delta: float) -> void:
@@ -66,15 +66,15 @@ func setupMultiPlayerbridge():
 	multiplayer.set_multiplayer_peer(multiplayerBridge.multiplayer_peer)
 	multiplayer.peer_connected.connect(onPeerConnected)
 	multiplayer.peer_disconnected.connect(onPeerDisconnected)
-	print("Multiplayer bridge setup complete")
+	#print("Multiplayer bridge setup complete")
 
 func onPeerDisconnected(id):
-	print('Peer Disconnected, ID:', str(id))
+	#print('Peer Disconnected, ID:', str(id))
 	Players.erase(id)
-	print("Remaining Players:", Players)
+	#print("Remaining Players:", Players)
 
 func onPeerConnected(id):
-	print('Peer Connected, ID:', str(id))
+	#print('Peer Connected, ID:', str(id))
 	if id==0:
 		return
 	
@@ -89,19 +89,19 @@ func onPeerConnected(id):
 	if multiplayer.get_unique_id()==0:
 		return
 	if !Players.has(multiplayer.get_unique_id()):
-		print("new id",multiplayer.get_unique_id())
+		#print("new id",multiplayer.get_unique_id())
 		Players[multiplayer.get_unique_id()] = {
 			"name" : multiplayer.get_unique_id(),
 			"ready" : 0
 		}
-	print("Current Players:", Players)
+	#print("Current Players:", Players)
 
 func onMatchJoinError(error):
 	print("Unable to Join Match", error.message)
 	pass
 
 func onMatchJoin():
-	print("Joined match with ID", multiplayerBridge.match_id)
+	#print("Joined match with ID", multiplayerBridge.match_id)
 	pass
 
 func _on_store_data_button_down() -> void:
@@ -120,20 +120,20 @@ func _on_store_data_button_down() -> void:
 	if result.is_exception():
 		print("Error storing data", result)
 		return
-	print("Store Data Successfully")
+	#print("Store Data Successfully")
 
 func _on_get_data_button_down() -> void:
 	var result = await client.read_storage_objects_async(session, [
 		NakamaStorageObjectId.new("saves", "savegame", session.user_id)
 	])
 	if result.is_exception():
-		print("Error retrieving data", result)
+		#print("Error retrieving data", result)
 		return
-	print("Retrieved Store Data Successfully", result)
+	#print("Retrieved Store Data Successfully", result)
 
 func _on_join_create_button_button_down() -> void:
 	multiplayerBridge.join_named_match($Panel4/Match.text)
-	print("Attempting to join match", $Panel4/Match.text)
+	#print("Attempting to join match", $Panel4/Match.text)
 
 func _on_ping_button_down() -> void:
 	sendData.rpc("Hello World")
@@ -141,7 +141,8 @@ func _on_ping_button_down() -> void:
 
 @rpc("any_peer")
 func sendData(message):
-	print("Received message:", message)
+	#print("Received message:", message)
+	pass
 
 func _on_match_making_button_down() -> void:
 	var query = "+properties.region:US"
@@ -151,13 +152,13 @@ func _on_match_making_button_down() -> void:
 	if ticket.is_exception():
 		print("Failed to match")
 		return
-	print("Match ticket number:", str(ticket))
+	#print("Match ticket number:", str(ticket))
 	socket.received_matchmaker_matched.connect(onMatchMakerMatched)
 
 func onMatchMakerMatched(match):
 	var joinedMatch = await socket.join_matched_async(match)
 	createdMatch = joinedMatch
-	print("Matchmaker matched successfully", createdMatch)
+	#print("Matchmaker matched successfully", createdMatch)
 
 @rpc("any_peer", "call_local")
 func Ready(id):
@@ -168,16 +169,16 @@ func Ready(id):
 		for i in Players:
 			if Players[i].ready == 1:
 				readyPlayers += 1
-		print("Ready Players:", readyPlayers, "/", Players.size())
+		#print("Ready Players:", readyPlayers, "/", Players.size())
 		if readyPlayers == Players.size():
 			StartGame.rpc()
 
 @rpc("any_peer", "call_local")
 func StartGame():
 	OnStartGame.emit()
-	print("Game starting")
+	#print("Game starting")
 	hide()
 
 func _on_start_button_down() -> void:
 	Ready.rpc(multiplayer.get_unique_id())
-	print("Player", multiplayer.get_unique_id(), "ready")
+	#print("Player", multiplayer.get_unique_id(), "ready")

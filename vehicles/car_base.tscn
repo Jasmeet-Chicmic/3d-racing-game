@@ -145,6 +145,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97449, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Body/CameraBase"]
 transform = Transform3D(-1, 2.11495e-08, -8.48259e-08, 0, 0.970296, 0.241922, 8.74228e-08, 0.241922, -0.970296, 0, 2.032, -4.394)
+current = true
 fov = 74.0
 near = 0.1
 script = ExtResource("4_6igu8")
@@ -185,7 +186,6 @@ lower_fade = 1.0
 cull_mask = 1048573
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Body"]
-current = true
 
 [node name="InteriorCameraPosition" type="Marker3D" parent="Body"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9, 0.3)
