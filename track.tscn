@@ -181,6 +181,15 @@ collision_layer = 2
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
+[node name="SpwanPoints" type="Node3D" parent="." index="5"]
+transform = Transform3D(1, -8.04636e-05, -0.00010614, 8.04301e-05, 1, -0.00032266, 0.000106166, 0.000322652, 1, 0, 0, 0)
+
+[node name="SpwanPoint1" type="Node3D" parent="SpwanPoints" index="0" groups=["spawnpoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.14726)
+
+[node name="SpwanPoint2" type="Node3D" parent="SpwanPoints" index="1" groups=["spawnpoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.51361)
+
 [connection signal="body_entered" from="Sets/Set0" to="." method="_on_area_3d_body_entered" binds= [0]]
 [connection signal="body_entered" from="Sets/Set1" to="." method="_on_area_3d_body_entered" binds= [1]]
 [connection signal="body_entered" from="Sets/Set2" to="." method="_on_area_3d_body_entered" binds= [2]]

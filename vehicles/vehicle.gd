@@ -5,7 +5,6 @@ const STEER_LIMIT = 0.4
 const BRAKE_STRENGTH = 2.0
 @onready var body = $Body;
 @export var engineValue := 40.0
-#@export var body:VehicleBody3D;
 @onready var previous_speed = body.linear_velocity.length()
 var _steer_target = 0.0
 var set_array = []

@@ -9,9 +9,11 @@ func onStartGame():
 	var track=multiplayerScene.instantiate()
 	$MultiplayerScene.add_child(track)
 	track.GameEnd.connect(onGameEnd)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 func onGameEnd(winner):
+	$MultiplayerScene.hide()
 	$Control.setResult(winner)
 	
