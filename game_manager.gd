@@ -6,7 +6,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func onStartGame():
-	$MultiplayerScene.add_child(multiplayerScene.instantiate())
+	var track=multiplayerScene.instantiate()
+	$MultiplayerScene.add_child(track)
+	track.GameEnd.connect(onGameEnd)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+func onGameEnd(winner):
+	$Control.setResult(winner)
+	

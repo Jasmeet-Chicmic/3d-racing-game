@@ -4,7 +4,7 @@ extends Node3D
 # Assuming the node has children
 var child_count
 var spawnpoints
-
+signal GameEnd()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	child_count = $Sets.get_child_count()
@@ -39,3 +39,10 @@ func _on_area_3d_body_entered(body: Node3D, road_idx: int) -> void:
 
 			if all_true:
 				print("Win!  Body:", body.get_parent().name)
+				gameEnd.rpc(body.get_parent().name)
+
+@rpc("any_peer", "call_local")
+func gameEnd(winner):
+	#print("Game starting")
+	GameEnd.emit(winner)
+	hide()
