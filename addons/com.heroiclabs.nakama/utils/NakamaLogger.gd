@@ -35,4 +35,5 @@ func verbose(msg):
 	_log(LOG_LEVEL.VERBOSE, msg)
 
 func debug(msg):
-	_log(LOG_LEVEL.DEBUG, msg)
+	#_log(LOG_LEVEL.DEBUG, msg)
+	pass

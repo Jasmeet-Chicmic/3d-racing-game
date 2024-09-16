@@ -1,31 +1,41 @@
 extends Node3D
-@export var playerScene : PackedScene
 
+@export var playerScene: PackedScene
+# Assuming the node has children
+var child_count
 var spawnpoints
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#spawnpoints = get_tree().get_nodes_in_group("spawnpoint")
+	child_count = $Sets.get_child_count()
+	# Each instance should have its own set_array
+	var set_array = [] # Create a new array for this instance
+	set_array.resize(child_count)
+	set_array.fill(false)
+	
 	var index = 0
 	var keys = NakamaMultiplayer.Players.keys()
 	keys.sort()
-	#print("Players==>",NakamaMultiplayer.Players)
-	#print("KeySorted=====",keys,spawnpoints)
+	
 	for i in keys:
 		var instancedPlayer = playerScene.instantiate()
 		instancedPlayer.name = str(NakamaMultiplayer.Players[i].name)
-		
+		instancedPlayer.set_array = set_array.duplicate() # Assign a unique set_array to each player
 		add_child(instancedPlayer)
-		#print("Index",index,"===>>",i,"====>",keys,"====>",spawnpoints)
-		#instancedPlayer.global_position = spawnpoints[index].global_position
-		
 		index += 1
-	#
-	pass # Replace with function body.
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
+# Called when an area is entered
+func _on_area_3d_body_entered(body: Node3D, road_idx: int) -> void:
+	if is_multiplayer_authority():
+		print("Body:-", body.get_parent().name)
+		body.get_parent().set_array[road_idx] = true # Access the player's unique set_array
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("Area Entered",body.get_parent_node_3d().name)
-	pass # Replace with function body.
+		if road_idx == 0:
+			var all_true = true
+			for value in body.get_parent().set_array:
+				if not value:
+					all_true = false
+					break
+
+			if all_true:
+				print("Win!  Body:", body.get_parent().name)

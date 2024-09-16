@@ -57,6 +57,7 @@ func _on_login_button_button_down() -> void:
 	$Panel/DisplaynameText.text = account.user.display_name
 	
 	setupMultiPlayerbridge()
+	_on_join_create_button_button_down()
 
 func setupMultiPlayerbridge():
 	multiplayerBridge = NakamaMultiplayerBridge.new(socket)
