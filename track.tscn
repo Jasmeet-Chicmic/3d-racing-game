@@ -196,6 +196,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.51361)
 
 [node name="StartTimer" type="Label3D" parent="." index="6"]
 transform = Transform3D(-0.0596117, 0, 1.99911, 0, 2, 0, -1.99911, 0, -0.0596117, -10.3902, 2.21349, 4.96848)
+font_size = 52
+outline_size = 10
 width = 1000.0
 script = ExtResource("4_drc3t")
 
