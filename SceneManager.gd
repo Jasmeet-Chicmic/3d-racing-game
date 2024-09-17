@@ -1,6 +1,5 @@
 extends Node3D
-
-@export var playerScene: PackedScene
+@export var playerScene: Array[PackedScene]
 # Assuming the node has children
 var child_count
 var spawnpoints
@@ -22,8 +21,11 @@ func _ready():
 	keys.sort()
 	
 	for i in keys:
-		var instancedPlayer = playerScene.instantiate()
+		print("My Id",NakamaMultiplayer.Players[i].vehicleId)
+		var instancedPlayer = playerScene[NakamaMultiplayer.Players[i].vehicleId].instantiate()
+		print("Inst",instancedPlayer)
 		instancedPlayer.name = str(NakamaMultiplayer.Players[i].name)
+		
 		instancedPlayer.set_array = set_array.duplicate() # Assign a unique set_array to each player
 		$Players.add_child(instancedPlayer)
 		instancedPlayer.set_physics_process(false)
@@ -44,7 +46,7 @@ func timerStart():
 	pass
 func _on_area_3d_body_entered(body: Node3D, road_idx: int) -> void:
 	if is_multiplayer_authority():
-		print("Body:-", body.get_parent().name)
+		#print("Body:-", body.get_parent().name)
 		body.get_parent().set_array[road_idx] = true # Access the player's unique set_array
 
 		if road_idx == 0:

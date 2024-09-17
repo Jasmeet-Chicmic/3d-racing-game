@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://v1wsnv8vrbom"]
+[gd_scene load_steps=6 format=3 uid="uid://v1wsnv8vrbom"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_5vcq5"]
 [ext_resource type="PackedScene" uid="uid://y05np6685tun" path="res://test scene.tscn" id="2_kd3lc"]
 [ext_resource type="PackedScene" uid="uid://dpu5dr6vhqyqi" path="res://track.tscn" id="2_tvhnu"]
+[ext_resource type="PackedScene" uid="uid://ckvqraq6j1okh" path="res://car_select/car_select.tscn" id="3_stw4s"]
 [ext_resource type="PackedScene" uid="uid://b2gjog7peu5s1" path="res://Result.tscn" id="4_ufhw7"]
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_5vcq5")
 multiplayerScene = ExtResource("2_tvhnu")
 
+[node name="CarSelect" parent="." instance=ExtResource("3_stw4s")]
+
 [node name="UI" parent="." instance=ExtResource("2_kd3lc")]
+visible = false
 
 [node name="MultiplayerScene" type="Node3D" parent="."]
 

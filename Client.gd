@@ -5,14 +5,18 @@ var client:NakamaClient
 var socket :NakamaSocket
 var createdMatch
 var multiplayerBridge
+var vehicleId
 static var Players={}
 signal OnStartGame()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"../CarSelect".MultiPlayerConnection.connect(showUIScreen)
 	client=Nakama.create_client("defaultkey",'192.180.0.29',7350,'http')
 	pass
-
+func showUIScreen(id):
+	vehicleId=id
+	show()
 func updateUserInfo(username, displayname, avatarurl="", language="en", location="us", timezone="est"):
 	await client.update_account_async(session, username, displayname, avatarurl, language, location, timezone)
 
@@ -80,10 +84,11 @@ func onPeerConnected(id):
 		return
 	
 	if !Players.has(id):
-		print("Old id",id)
+		#print("Old id",id)
 		Players[id] = {
 			"name" : id,
-			"ready" : 0
+			"ready" : 0,
+			"vehicleId":0
 		}
 		
 	# Add ourself
@@ -93,7 +98,8 @@ func onPeerConnected(id):
 		#print("new id",multiplayer.get_unique_id())
 		Players[multiplayer.get_unique_id()] = {
 			"name" : multiplayer.get_unique_id(),
-			"ready" : 0
+			"ready" : 0,
+			"vehicleId":vehicleId
 		}
 	#print("Current Players:", Players)
 
@@ -162,9 +168,10 @@ func onMatchMakerMatched(match):
 	#print("Matchmaker matched successfully", createdMatch)
 
 @rpc("any_peer", "call_local")
-func Ready(id):
+func Ready(id,vehicleId):
 	Players[id].ready = 1
-	print("Player", id, "is ready")
+	Players[id].vehicleId=vehicleId
+	#print("Player", id, "is ready")
 	if multiplayer.is_server():
 		var readyPlayers = 0
 		for i in Players:
@@ -181,5 +188,5 @@ func StartGame():
 	hide()
 
 func _on_start_button_down() -> void:
-	Ready.rpc(multiplayer.get_unique_id())
+	Ready.rpc(multiplayer.get_unique_id(),vehicleId)
 	#print("Player", multiplayer.get_unique_id(), "ready")

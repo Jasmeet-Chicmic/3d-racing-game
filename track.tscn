@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpu5dr6vhqyqi"]
+[gd_scene load_steps=12 format=3 uid="uid://dpu5dr6vhqyqi"]
 
 [ext_resource type="PackedScene" uid="uid://dta0aubqubx5g" path="res://assets/track_2.glb" id="1_nhwcv"]
 [ext_resource type="Script" path="res://SceneManager.gd" id="2_fyio1"]
 [ext_resource type="PackedScene" uid="uid://c1uai3rvx8hul" path="res://vehicles/car_base.tscn" id="3_wbgdp"]
 [ext_resource type="Script" path="res://timer.gd" id="4_drc3t"]
+[ext_resource type="PackedScene" uid="uid://bh7765vrq5muf" path="res://vehicles/tow_truck.tscn" id="4_vd7au"]
+[ext_resource type="PackedScene" uid="uid://drinprblemj5u" path="res://vehicles/trailer_truck.tscn" id="5_7vl7c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ppva"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,7 +27,7 @@ data = PackedVector3Array(-17.8801, 1.65, -13.7624, -17.8977, 1.65, -13.7447, -1
 
 [node name="Track" instance=ExtResource("1_nhwcv")]
 script = ExtResource("2_fyio1")
-playerScene = ExtResource("3_wbgdp")
+playerScene = Array[PackedScene]([ExtResource("3_wbgdp"), ExtResource("5_7vl7c"), ExtResource("4_vd7au")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
 environment = SubResource("Environment_rjknr")
@@ -47,66 +49,67 @@ shape = SubResource("ConcavePolygonShape3D_slpey")
 
 [node name="Sets" type="Node3D" parent="." index="4"]
 
-[node name="Set0" type="Area3D" parent="Sets" index="0"]
+[node name="Set16" type="Area3D" parent="Sets" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5406, 0, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set0" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set16" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set1" type="Area3D" parent="Sets" index="1"]
+[node name="Set15" type="Area3D" parent="Sets" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1384, 0, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set1" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set15" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set2" type="Area3D" parent="Sets" index="2"]
+[node name="Set14" type="Area3D" parent="Sets" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.4104, 0, -40.0566)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set2" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set14" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.99631, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set3" type="Area3D" parent="Sets" index="3"]
+[node name="Set13" type="Area3D" parent="Sets" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.8051, 0, -80.481)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set3" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set13" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.23645, 0, 1.66476)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set4" type="Area3D" parent="Sets" index="4"]
+[node name="Set12" type="Area3D" parent="Sets" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8721, 0, -46.9747)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set4" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set12" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.89828, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set5" type="Area3D" parent="Sets" index="5"]
+[node name="Set11" type="Area3D" parent="Sets" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0563, 0, -11.0802)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set5" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set11" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.16236, 0, 2.02283)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set6" type="Area3D" parent="Sets" index="6"]
+[node name="Set10" type="Area3D" parent="Sets" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6581, 0, -47.0884)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set6" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set10" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.6332, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set7" type="Area3D" parent="Sets" index="7"]
+[node name="Set9" type="Area3D" parent="Sets" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6303, 0, -83.7127)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set7" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set9" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.07708, 0, 3.47934)
 shape = SubResource("BoxShape3D_lnwji")
 
@@ -118,67 +121,67 @@ collision_layer = 2
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.76851, 0, 4.38052)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set9" type="Area3D" parent="Sets" index="9"]
+[node name="Set7" type="Area3D" parent="Sets" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94099, 0, -62.8211)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set9" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set7" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.7007, 0, 2.55582)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set10" type="Area3D" parent="Sets" index="10"]
+[node name="Set6" type="Area3D" parent="Sets" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.293, 0, -53.2921)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set10" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set6" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 1.84998)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set11" type="Area3D" parent="Sets" index="11"]
+[node name="Set5" type="Area3D" parent="Sets" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.9391, 0, -70.2326)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set11" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set5" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.99509, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set12" type="Area3D" parent="Sets" index="12"]
+[node name="Set4" type="Area3D" parent="Sets" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.468, 0, -67.7621)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set12" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set4" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -9.64194, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set13" type="Area3D" parent="Sets" index="13"]
+[node name="Set3" type="Area3D" parent="Sets" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.5862, 0, -46.2335)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set13" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set3" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 9.26145)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set14" type="Area3D" parent="Sets" index="14"]
+[node name="Set2" type="Area3D" parent="Sets" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76465, 0, -30.7047)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set14" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set2" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.81853, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set15" type="Area3D" parent="Sets" index="15"]
+[node name="Set1" type="Area3D" parent="Sets" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.8218, 0, -24.352)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set15" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set1" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.23046, 0, 8.55559)
 shape = SubResource("BoxShape3D_lnwji")
 
-[node name="Set16" type="Area3D" parent="Sets" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.5272, 0, 0)
+[node name="Set0" type="Area3D" parent="Sets" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.622353, 0, 0)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set16" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set0" index="0"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
 shape = SubResource("BoxShape3D_lnwji")
 
@@ -192,27 +195,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.14726)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.51361)
 
 [node name="StartTimer" type="Label3D" parent="." index="6"]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 3.94069, 2.21349, 4.96848)
+transform = Transform3D(-0.0596117, 0, 1.99911, 0, 2, 0, -1.99911, 0, -0.0596117, -10.3902, 2.21349, 4.96848)
 width = 1000.0
 script = ExtResource("4_drc3t")
 
 [node name="Timer" type="Timer" parent="StartTimer" index="0"]
 
-[connection signal="body_entered" from="Sets/Set0" to="." method="_on_area_3d_body_entered" binds= [0]]
-[connection signal="body_entered" from="Sets/Set1" to="." method="_on_area_3d_body_entered" binds= [1]]
-[connection signal="body_entered" from="Sets/Set2" to="." method="_on_area_3d_body_entered" binds= [2]]
-[connection signal="body_entered" from="Sets/Set3" to="." method="_on_area_3d_body_entered" binds= [3]]
-[connection signal="body_entered" from="Sets/Set4" to="." method="_on_area_3d_body_entered" binds= [4]]
-[connection signal="body_entered" from="Sets/Set5" to="." method="_on_area_3d_body_entered" binds= [5]]
-[connection signal="body_entered" from="Sets/Set6" to="." method="_on_area_3d_body_entered" binds= [6]]
-[connection signal="body_entered" from="Sets/Set7" to="." method="_on_area_3d_body_entered" binds= [7]]
-[connection signal="body_entered" from="Sets/Set8" to="." method="_on_area_3d_body_entered" binds= [8]]
-[connection signal="body_entered" from="Sets/Set9" to="." method="_on_area_3d_body_entered" binds= [9]]
-[connection signal="body_entered" from="Sets/Set10" to="." method="_on_area_3d_body_entered" binds= [10]]
-[connection signal="body_entered" from="Sets/Set11" to="." method="_on_area_3d_body_entered" binds= [11]]
-[connection signal="body_entered" from="Sets/Set12" to="." method="_on_area_3d_body_entered" binds= [12]]
-[connection signal="body_entered" from="Sets/Set13" to="." method="_on_area_3d_body_entered" binds= [13]]
-[connection signal="body_entered" from="Sets/Set14" to="." method="_on_area_3d_body_entered" binds= [14]]
-[connection signal="body_entered" from="Sets/Set15" to="." method="_on_area_3d_body_entered" binds= [15]]
 [connection signal="body_entered" from="Sets/Set16" to="." method="_on_area_3d_body_entered" binds= [16]]
+[connection signal="body_entered" from="Sets/Set15" to="." method="_on_area_3d_body_entered" binds= [15]]
+[connection signal="body_entered" from="Sets/Set14" to="." method="_on_area_3d_body_entered" binds= [14]]
+[connection signal="body_entered" from="Sets/Set13" to="." method="_on_area_3d_body_entered" binds= [13]]
+[connection signal="body_entered" from="Sets/Set12" to="." method="_on_area_3d_body_entered" binds= [12]]
+[connection signal="body_entered" from="Sets/Set11" to="." method="_on_area_3d_body_entered" binds= [11]]
+[connection signal="body_entered" from="Sets/Set10" to="." method="_on_area_3d_body_entered" binds= [10]]
+[connection signal="body_entered" from="Sets/Set9" to="." method="_on_area_3d_body_entered" binds= [9]]
+[connection signal="body_entered" from="Sets/Set8" to="." method="_on_area_3d_body_entered" binds= [8]]
+[connection signal="body_entered" from="Sets/Set7" to="." method="_on_area_3d_body_entered" binds= [7]]
+[connection signal="body_entered" from="Sets/Set6" to="." method="_on_area_3d_body_entered" binds= [6]]
+[connection signal="body_entered" from="Sets/Set5" to="." method="_on_area_3d_body_entered" binds= [5]]
+[connection signal="body_entered" from="Sets/Set4" to="." method="_on_area_3d_body_entered" binds= [4]]
+[connection signal="body_entered" from="Sets/Set3" to="." method="_on_area_3d_body_entered" binds= [3]]
+[connection signal="body_entered" from="Sets/Set2" to="." method="_on_area_3d_body_entered" binds= [2]]
+[connection signal="body_entered" from="Sets/Set1" to="." method="_on_area_3d_body_entered" binds= [1]]
+[connection signal="body_entered" from="Sets/Set0" to="." method="_on_area_3d_body_entered" binds= [0]]
 [connection signal="timeout" from="StartTimer/Timer" to="." method="timerStart"]
