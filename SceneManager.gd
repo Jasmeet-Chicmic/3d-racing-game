@@ -4,9 +4,12 @@ extends Node3D
 # Assuming the node has children
 var child_count
 var spawnpoints
+var timer=0
+var gameStartLabel=["3","2","1","Let's Go",""]
 signal GameEnd()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	child_count = $Sets.get_child_count()
 	spawnpoints = get_tree().get_nodes_in_group("spawnpoint")
 	# Each instance should have its own set_array
@@ -22,11 +25,23 @@ func _ready():
 		var instancedPlayer = playerScene.instantiate()
 		instancedPlayer.name = str(NakamaMultiplayer.Players[i].name)
 		instancedPlayer.set_array = set_array.duplicate() # Assign a unique set_array to each player
-		add_child(instancedPlayer)
+		$Players.add_child(instancedPlayer)
+		instancedPlayer.set_physics_process(false)
 		instancedPlayer.global_position = spawnpoints[index].global_position
 		index += 1
+	$StartTimer/Timer.start()
 
 # Called when an area is entered
+func timerStart():
+	$StartTimer.update_Timer(gameStartLabel[timer])
+	timer+=1
+	if timer==gameStartLabel.size():
+		$StartTimer/Timer.stop()
+		$StartTimer.hide()
+		for player in $Players.get_children():
+			player.set_physics_process(true)
+		
+	pass
 func _on_area_3d_body_entered(body: Node3D, road_idx: int) -> void:
 	if is_multiplayer_authority():
 		print("Body:-", body.get_parent().name)

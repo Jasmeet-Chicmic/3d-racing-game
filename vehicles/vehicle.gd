@@ -15,6 +15,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+	#set_physics_process(false)
 	
 @rpc("any_peer","call_local")
 func moveCar(delta):

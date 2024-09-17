@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpu5dr6vhqyqi"]
+[gd_scene load_steps=10 format=3 uid="uid://dpu5dr6vhqyqi"]
 
 [ext_resource type="PackedScene" uid="uid://dta0aubqubx5g" path="res://assets/track_2.glb" id="1_nhwcv"]
 [ext_resource type="Script" path="res://SceneManager.gd" id="2_fyio1"]
 [ext_resource type="PackedScene" uid="uid://c1uai3rvx8hul" path="res://vehicles/car_base.tscn" id="3_wbgdp"]
+[ext_resource type="Script" path="res://timer.gd" id="4_drc3t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ppva"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -190,6 +191,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.14726)
 [node name="SpwanPoint2" type="Node3D" parent="SpwanPoints" index="1" groups=["spawnpoint"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.51361)
 
+[node name="StartTimer" type="Label3D" parent="." index="6"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 3.94069, 2.21349, 4.96848)
+width = 1000.0
+script = ExtResource("4_drc3t")
+
+[node name="Timer" type="Timer" parent="StartTimer" index="0"]
+
 [connection signal="body_entered" from="Sets/Set0" to="." method="_on_area_3d_body_entered" binds= [0]]
 [connection signal="body_entered" from="Sets/Set1" to="." method="_on_area_3d_body_entered" binds= [1]]
 [connection signal="body_entered" from="Sets/Set2" to="." method="_on_area_3d_body_entered" binds= [2]]
@@ -207,3 +215,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.51361)
 [connection signal="body_entered" from="Sets/Set14" to="." method="_on_area_3d_body_entered" binds= [14]]
 [connection signal="body_entered" from="Sets/Set15" to="." method="_on_area_3d_body_entered" binds= [15]]
 [connection signal="body_entered" from="Sets/Set16" to="." method="_on_area_3d_body_entered" binds= [16]]
+[connection signal="timeout" from="StartTimer/Timer" to="." method="timerStart"]
