@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bh7765vrq5muf"]
+[gd_scene load_steps=29 format=3 uid="uid://bh7765vrq5muf"]
 
 [ext_resource type="Script" path="res://vehicles/vehicle.gd" id="1_qhfnb"]
 [ext_resource type="ArrayMesh" uid="uid://bqrwin8ccgptt" path="res://vehicles/meshes/wheel.res" id="2_uwuq1"]
@@ -90,12 +90,28 @@ friction = 0.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbuqf"]
 size = Vector3(0.954078, 1, 2.32662)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_y0g4j"]
+properties/0/path = NodePath("Body:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Body:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Body2:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Body2:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
 [node name="TowTruck" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_qhfnb")
 
 [node name="Body" type="VehicleBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
+collision_mask = 2
 center_of_mass_mode = 1
-script = ExtResource("1_qhfnb")
 
 [node name="Wheel1" type="VehicleWheel3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573678, 0.000773743, 1.10416)
@@ -224,6 +240,7 @@ transform = Transform3D(-1, 8.74228e-08, 0, 3.82137e-15, 4.37114e-08, 1, 8.74228
 
 [node name="ChainB1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.846248, -0.53279, 0, 0.53279, 0.846248, 0, 1.10846, -1.55698)
+collision_mask = 2
 
 [node name="Chain1" type="MeshInstance3D" parent="ChainB1"]
 layers = 2
@@ -236,6 +253,7 @@ shape = SubResource("CapsuleShape3D_eoojf")
 
 [node name="ChainB2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.846248, -0.53279, 0, 0.53279, 0.846248, 0, 0.803378, -1.75806)
+collision_mask = 2
 
 [node name="Chain1" type="MeshInstance3D" parent="ChainB2"]
 layers = 2
@@ -248,6 +266,7 @@ shape = SubResource("CapsuleShape3D_eoojf")
 
 [node name="ChainB3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.846248, -0.53279, 0, 0.53279, 0.846248, 0, 0.490045, -1.96106)
+collision_mask = 2
 
 [node name="Chain1" type="MeshInstance3D" parent="ChainB3"]
 layers = 2
@@ -260,6 +279,7 @@ shape = SubResource("CapsuleShape3D_eoojf")
 
 [node name="ChainB4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.447167, -0.894451, 0, 0.894451, 0.447167, 0, 0.290326, -2.19413)
+collision_mask = 2
 
 [node name="Chain1" type="MeshInstance3D" parent="ChainB4"]
 layers = 2
@@ -272,6 +292,7 @@ shape = SubResource("CapsuleShape3D_eoojf")
 
 [node name="ChainB5" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0993884, -0.995049, 0, 0.995049, 0.0993884, 0, 0.205717, -2.50193)
+collision_mask = 2
 
 [node name="Chain1" type="MeshInstance3D" parent="ChainB5"]
 layers = 2
@@ -312,6 +333,7 @@ params/bias = 0.5
 
 [node name="Body2" type="VehicleBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -3.97518)
+collision_mask = 2
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_hvgqm")
 center_of_mass_mode = 1
@@ -399,3 +421,6 @@ cull_mask = 1048573
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.148269, -2.64894)
 node_a = NodePath("../ChainB5")
 node_b = NodePath("../Body2")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_y0g4j")
