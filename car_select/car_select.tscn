@@ -61,7 +61,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 icon = ExtResource("4")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -81,7 +81,8 @@ theme_override_fonts/font = SubResource("FontVariation_hqcvw")
 theme_override_font_sizes/font_size = 64
 text = "3D Racing"
 
-[node name="Button" type="Button" parent="."]
+[node name="StartGame" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -96,7 +97,25 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Start"
 
+[node name="Waiting" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -162.0
+offset_right = 188.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Waiting Other Player To Join............."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="HBoxContainer/MiniVan" to="." method="onVechileSelect" binds= [0]]
 [connection signal="pressed" from="HBoxContainer/TrailerTruck" to="." method="onVechileSelect" binds= [1]]
 [connection signal="pressed" from="HBoxContainer/TowTruck" to="." method="onVechileSelect" binds= [2]]
-[connection signal="button_down" from="Button" to="." method="startGame"]
+[connection signal="button_down" from="StartGame" to="." method="startGame"]
+[connection signal="visibility_changed" from="Waiting" to="." method="_on_parent_visibility_changed"]

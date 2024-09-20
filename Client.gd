@@ -5,7 +5,7 @@ var client:NakamaClient
 var socket :NakamaSocket
 var createdMatch
 var multiplayerBridge
-var vehicleId
+var vehicleId=0
 static var Players={}
 signal OnStartGame()
 
@@ -13,6 +13,7 @@ signal OnStartGame()
 func _ready() -> void:
 	$"../CarSelect".VechileSelected.connect(selectedVehicle)
 	$"../CarSelect".StartGame.connect(_on_start_button_down)
+	
 	client=Nakama.create_client("defaultkey",'192.180.0.29',7350,'http')
 	pass
 func selectedVehicle(id):
@@ -105,6 +106,7 @@ func onPeerConnected(id):
 			"vehicleId":vehicleId
 		}
 	#print("Current Players:", Players)
+	$"../CarSelect".otherPlayerJoined()
 
 func onMatchJoinError(error):
 	print("Unable to Join Match", error.message)
@@ -172,6 +174,7 @@ func onMatchMakerMatched(match):
 
 @rpc("any_peer", "call_local")
 func Ready(id,vehicleId):
+	#print("Id==>",id,"=>Player==>",Players)
 	Players[id].ready = 1
 	Players[id].vehicleId=vehicleId
 	#print("Player", id, "is ready")
