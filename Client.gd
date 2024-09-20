@@ -175,6 +175,7 @@ func onMatchMakerMatched(match):
 @rpc("any_peer", "call_local")
 func Ready(id,vehicleId):
 	#print("Id==>",id,"=>Player==>",Players)
+	
 	Players[id].ready = 1
 	Players[id].vehicleId=vehicleId
 	#print("Player", id, "is ready")
@@ -195,5 +196,6 @@ func StartGame():
 	$"../CarSelect".hide()
 
 func _on_start_button_down() -> void:
+	$"../CarSelect".waitingButtonStatusChange()
 	Ready.rpc(multiplayer.get_unique_id(),vehicleId)
 	#print("Player", multiplayer.get_unique_id(), "ready")

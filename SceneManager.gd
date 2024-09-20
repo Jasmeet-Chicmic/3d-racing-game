@@ -21,9 +21,9 @@ func _ready():
 	keys.sort()
 	
 	for i in keys:
-		print("My Id",NakamaMultiplayer.Players[i].vehicleId)
+		#print("My Id",NakamaMultiplayer.Players[i].vehicleId)
 		var instancedPlayer = playerScene[NakamaMultiplayer.Players[i].vehicleId].instantiate()
-		print("Inst",instancedPlayer)
+		#print("Inst",instancedPlayer)
 		instancedPlayer.name = str(NakamaMultiplayer.Players[i].name)
 		
 		instancedPlayer.set_array = set_array.duplicate() # Assign a unique set_array to each player

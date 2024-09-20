@@ -25,6 +25,10 @@ func vechileSelectedSignalEmit(vechileId):
 	#hide()
 	VechileSelected.emit(vechileId)
 
+func waitingButtonStatusChange():
+	$StartGame.hide()
+	$Waiting.text="Waiting for the other player to get ready..."
+	$Waiting.show()
 func otherPlayerJoined():
 	$Waiting.hide()
 	$StartGame.show()
