@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckvqraq6j1okh"]
+[gd_scene load_steps=8 format=3 uid="uid://ckvqraq6j1okh"]
 
+[ext_resource type="Theme" uid="uid://ilmetsar4m2d" path="res://lobby/assets/lobby_theme.tres" id="1_5h2ai"]
 [ext_resource type="Script" path="res://car_select/car_select.gd" id="1_npl4j"]
 [ext_resource type="Texture2D" uid="uid://bh7b4n4lg1uqt" path="res://car_select/choose_van.png" id="2"]
+[ext_resource type="Material" uid="uid://6uo5fr7fhw4w" path="res://lobby/assets/hexbackground/hexabackground_mat.tres" id="2_iaabl"]
 [ext_resource type="Texture2D" uid="uid://hvkcmpdq1t0k" path="res://car_select/choose_trailer.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://de7itkxhl0u28" path="res://car_select/choose_tow.png" id="4"]
 
@@ -13,20 +15,24 @@ spacing_space = 4
 
 [node name="CarSelect" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -300.0
-offset_right = 512.0
-offset_bottom = 300.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource("1_5h2ai")
 script = ExtResource("1_npl4j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("2_iaabl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -75,6 +81,22 @@ theme_override_fonts/font = SubResource("FontVariation_hqcvw")
 theme_override_font_sizes/font_size = 64
 text = "3D Racing"
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -136.0
+offset_right = 115.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+
 [connection signal="pressed" from="HBoxContainer/MiniVan" to="." method="onVechileSelect" binds= [0]]
 [connection signal="pressed" from="HBoxContainer/TrailerTruck" to="." method="onVechileSelect" binds= [1]]
 [connection signal="pressed" from="HBoxContainer/TowTruck" to="." method="onVechileSelect" binds= [2]]
+[connection signal="button_down" from="Button" to="." method="startGame"]

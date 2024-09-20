@@ -11,12 +11,13 @@ signal OnStartGame()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$"../CarSelect".MultiPlayerConnection.connect(showUIScreen)
+	$"../CarSelect".VechileSelected.connect(selectedVehicle)
+	$"../CarSelect".StartGame.connect(_on_start_button_down)
 	client=Nakama.create_client("defaultkey",'192.180.0.29',7350,'http')
 	pass
-func showUIScreen(id):
+func selectedVehicle(id):
 	vehicleId=id
-	show()
+	#show()
 func updateUserInfo(username, displayname, avatarurl="", language="en", location="us", timezone="est"):
 	await client.update_account_async(session, username, displayname, avatarurl, language, location, timezone)
 
@@ -62,6 +63,8 @@ func _on_login_button_button_down() -> void:
 	
 	setupMultiPlayerbridge()
 	_on_join_create_button_button_down()
+	hide()
+	$"../CarSelect".show()
 
 func setupMultiPlayerbridge():
 	multiplayerBridge = NakamaMultiplayerBridge.new(socket)
@@ -139,7 +142,7 @@ func _on_get_data_button_down() -> void:
 	#print("Retrieved Store Data Successfully", result)
 
 func _on_join_create_button_button_down() -> void:
-	multiplayerBridge.join_named_match($Panel4/Match.text)
+	multiplayerBridge.join_named_match($Panel2/Match.text)
 	#print("Attempting to join match", $Panel4/Match.text)
 
 func _on_ping_button_down() -> void:
@@ -185,7 +188,8 @@ func Ready(id,vehicleId):
 func StartGame():
 	OnStartGame.emit()
 	#print("Game starting")
-	hide()
+	#hide()
+	$"../CarSelect".hide()
 
 func _on_start_button_down() -> void:
 	Ready.rpc(multiplayer.get_unique_id(),vehicleId)

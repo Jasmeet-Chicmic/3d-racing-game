@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2gjog7peu5s1"]
+[gd_scene load_steps=4 format=3 uid="uid://b2gjog7peu5s1"]
 
 [ext_resource type="Script" path="res://result.gd" id="1_1xlga"]
+[ext_resource type="Material" uid="uid://6uo5fr7fhw4w" path="res://lobby/assets/hexbackground/hexabackground_mat.tres" id="1_mqlgu"]
+[ext_resource type="Theme" uid="uid://ilmetsar4m2d" path="res://lobby/assets/lobby_theme.tres" id="2_lhg4h"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,13 +11,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_lhg4h")
 script = ExtResource("1_1xlga")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("1_mqlgu")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.363
+anchor_top = 0.336
+anchor_right = 0.677
+anchor_bottom = 0.669
+offset_left = 157.824
+offset_top = 106.272
+offset_right = -203.904
+offset_bottom = -109.512
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -26,9 +44,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
+offset_left = -154.0
+offset_top = -52.0
+offset_right = 154.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Winner"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -11,9 +11,9 @@ script = ExtResource("1_5vcq5")
 multiplayerScene = ExtResource("2_tvhnu")
 
 [node name="CarSelect" parent="." instance=ExtResource("3_stw4s")]
+visible = false
 
 [node name="UI" parent="." instance=ExtResource("2_kd3lc")]
-visible = false
 
 [node name="MultiplayerScene" type="Node3D" parent="."]
 

@@ -1,6 +1,6 @@
 extends Control
-signal MultiPlayerConnection
-
+signal VechileSelected
+signal StartGame
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,11 +11,14 @@ func _process(delta: float) -> void:
 	
 	pass
 
-
+func startGame():
+	StartGame.emit()
+	#hide()
+	
 func onVechileSelect(vechileId:int):
 	print("vechileId:",vechileId)
-	signalEmit(vechileId)
+	vechileSelectedSignalEmit(vechileId)
 
-func signalEmit(vechileId):
-	hide()
-	MultiPlayerConnection.emit(vechileId)
+func vechileSelectedSignalEmit(vechileId):
+	#hide()
+	VechileSelected.emit(vechileId)
