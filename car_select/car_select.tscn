@@ -114,8 +114,8 @@ text = "Waiting Other Player To Join............."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="visibility_changed" from="." to="." method="_on_parent_visibility_changed"]
 [connection signal="pressed" from="HBoxContainer/MiniVan" to="." method="onVechileSelect" binds= [0]]
 [connection signal="pressed" from="HBoxContainer/TrailerTruck" to="." method="onVechileSelect" binds= [1]]
 [connection signal="pressed" from="HBoxContainer/TowTruck" to="." method="onVechileSelect" binds= [2]]
 [connection signal="button_down" from="StartGame" to="." method="startGame"]
-[connection signal="visibility_changed" from="Waiting" to="." method="_on_parent_visibility_changed"]

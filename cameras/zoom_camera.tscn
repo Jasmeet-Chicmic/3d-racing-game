@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6slvi14v2v3w"]
+
+[ext_resource type="Script" path="res://cameras/zoom_camera.gd" id="1"]
+
+[node name="ZoomCamera" type="Camera3D"]
+script = ExtResource("1")

@@ -13,7 +13,7 @@ signal OnStartGame()
 func _ready() -> void:
 	$"../CarSelect".VechileSelected.connect(selectedVehicle)
 	$"../CarSelect".StartGame.connect(_on_start_button_down)
-	
+	$"../Control".reload.connect(_on_session_end)
 	client=Nakama.create_client("defaultkey",'192.180.0.29',7350,'http')
 	pass
 func selectedVehicle(id):
@@ -199,3 +199,8 @@ func _on_start_button_down() -> void:
 	$"../CarSelect".waitingButtonStatusChange()
 	Ready.rpc(multiplayer.get_unique_id(),vehicleId)
 	#print("Player", multiplayer.get_unique_id(), "ready")
+
+func _on_session_end():
+	await client.session_logout_async(session)
+
+	pass

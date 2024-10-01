@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://cj4sx24i5j6ae"]
+
+[ext_resource type="ArrayMesh" path="res://race_cars/body_white.tres" id="1"]
+[ext_resource type="Script" path="res://vehicles/vehicle.gd" id="1_4i2vv"]
+[ext_resource type="ArrayMesh" path="res://race_cars/wheel_front_left.tres" id="2"]
+[ext_resource type="ArrayMesh" path="res://race_cars/wheel_back_right.tres" id="3"]
+[ext_resource type="ArrayMesh" path="res://race_cars/wheel_back_left.tres" id="4"]
+[ext_resource type="ArrayMesh" path="res://race_cars/wheel_front_right.tres" id="5"]
+
+[sub_resource type="FontFile" id="4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="BoxShape3D" id="1"]
+resource_local_to_scene = true
+size = Vector3(0.553616, 0.30206, 1.32173)
+
+[sub_resource type="CylinderShape3D" id="2"]
+resource_local_to_scene = true
+height = 0.731129
+radius = 0.175
+
+[sub_resource type="CylinderShape3D" id="3"]
+resource_local_to_scene = true
+height = 0.731
+radius = 0.175
+
+[node name="RaceCar" type="CharacterBody3D"]
+script = ExtResource("1_4i2vv")
+
+[node name="TopLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
+font = SubResource("4")
+
+[node name="Car" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.308, 0.048, 0.66)
+mesh = ExtResource("1")
+skeleton = NodePath("")
+
+[node name="WheelFrontLeftMesh" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205, 0.118, 0.328)
+mesh = ExtResource("2")
+skeleton = NodePath("")
+
+[node name="WheelFrontRightMesh" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205, 0.118, 0.328)
+mesh = ExtResource("5")
+skeleton = NodePath("")
+
+[node name="WheelBackLeftMesh" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205, 0.118, -0.473)
+mesh = ExtResource("4")
+skeleton = NodePath("")
+
+[node name="WheelBackRightMesh" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205, 0.118, -0.473)
+mesh = ExtResource("3")
+skeleton = NodePath("")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0.03)
+shape = SubResource("1")
+
+[node name="WheelFrontCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.118, -0.327513)
+shape = SubResource("2")
+
+[node name="WheelBackCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.118, 0.472957)
+shape = SubResource("3")
+
+[node name="FrontRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.328)
+
+[node name="BackRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.473)
+
+[node name="CameraPositions" type="Node3D" parent="."]
+
+[node name="Top" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(1, 0, 0, 0, 0.907345, 0.420387, 0, -0.420387, 0.907345, 0, 2, 2.5)
+
+[node name="Back" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(1, 0, 0, 0, 0.951234, 0.308469, 0, -0.308469, 0.951234, 0, 1.028, 1.55)
+
+[node name="Driver" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(1, 0, 0, 0, 0.957072, 0.28985, 0, -0.28985, 0.957072, 0, 0.452, 0.072)
+
+[node name="Front" type="Marker3D" parent="CameraPositions"]
+transform = Transform3D(-1, 2.53395e-08, -8.36699e-08, 0, 0.957072, 0.28985, 8.74228e-08, 0.28985, -0.957072, 0, 0.697, -1.29)
+
+[node name="ContextRays" type="Node3D" parent="."]
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+visible = false
