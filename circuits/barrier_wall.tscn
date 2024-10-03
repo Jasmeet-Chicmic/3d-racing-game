@@ -6,6 +6,7 @@
 points = PackedVector3Array(1, 0.1312, -0.0299313, 1, 0.0245936, -7.45058e-09, 1, 0.1312, -0.0930808, 0, 0.1312, -0.0299313, 1, 0, -7.45058e-09, 0, 0.0245936, -7.45058e-09, 1, 0.0245936, -0.123, 0, 0.1312, -0.0930808, 1, 0, -0.123, 0, 0, -7.45058e-09, 0, 0.0245936, -0.123, 0, 0, -0.123)
 
 [node name="BarrierWall" type="StaticBody3D"]
+collision_layer = 2
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1")

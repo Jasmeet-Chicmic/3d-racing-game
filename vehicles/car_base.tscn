@@ -60,7 +60,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="CarBase" type="Node3D"]
-transform = Transform3D(0.000558466, 0, -1, 0, 1, 0, 1, 0, 0.000558466, -0.467857, 2.05084, 2.82896)
+transform = Transform3D(0.000558452, 0, -1, 0, 1, 0, 1, 0, 0.000558452, -0.467857, 2.05084, 2.82896)
 script = ExtResource("1_r806m")
 
 [node name="Body" type="VehicleBody3D" parent="."]
@@ -70,74 +70,87 @@ physics_material_override = SubResource("PhysicsMaterial_l7i2k")
 center_of_mass_mode = 1
 
 [node name="Wheel1" type="VehicleWheel3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573678, 0, 1.10416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.324912, -0.0042696, 0.528426)
 use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 0.4
-wheel_radius = 0.25
+wheel_radius = 0.2
+wheel_rest_length = 0.1
 wheel_friction_slip = 1.0
-suspension_travel = 2.0
+suspension_travel = 0.3
 suspension_stiffness = 40.0
+suspension_max_force = 3000.0
 damping_compression = 0.88
 
 [node name="Wheel1" type="MeshInstance3D" parent="Body/Wheel1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 2
 gi_mode = 2
 mesh = ExtResource("2_3cqaw")
 
 [node name="Wheel2" type="VehicleWheel3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573678, 0, -0.783403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306542, 0, -0.391943)
 use_as_traction = true
 wheel_roll_influence = 0.4
-wheel_radius = 0.25
+wheel_radius = 0.2
+wheel_rest_length = 0.1
 wheel_friction_slip = 1.0
-suspension_travel = 2.0
+suspension_travel = 0.3
 suspension_stiffness = 40.0
+suspension_max_force = 3000.0
 damping_compression = 0.88
 
 [node name="Wheel2" type="MeshInstance3D" parent="Body/Wheel2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 2
 gi_mode = 2
 mesh = ExtResource("2_3cqaw")
 
 [node name="Wheel3" type="VehicleWheel3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.573678, 0, 1.10416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325, -0.004, 0.528)
 use_as_traction = true
 use_as_steering = true
 wheel_roll_influence = 0.4
-wheel_radius = 0.25
+wheel_radius = 0.2
+wheel_rest_length = 0.1
 wheel_friction_slip = 1.0
-suspension_travel = 2.0
+suspension_travel = 0.3
 suspension_stiffness = 40.0
+suspension_max_force = 3000.0
 damping_compression = 0.88
 
 [node name="Wheel3" type="MeshInstance3D" parent="Body/Wheel3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 2
 gi_mode = 2
 mesh = ExtResource("2_3cqaw")
 
 [node name="Wheel4" type="VehicleWheel3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.573678, 0, -0.783403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.307, 0, -0.392)
 use_as_traction = true
 wheel_roll_influence = 0.4
-wheel_radius = 0.25
+wheel_radius = 0.2
+wheel_rest_length = 0.1
 wheel_friction_slip = 1.0
-suspension_travel = 2.0
+suspension_travel = 0.3
 suspension_stiffness = 40.0
+suspension_max_force = 3000.0
 damping_compression = 0.88
 
 [node name="Wheel4" type="MeshInstance3D" parent="Body/Wheel4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 2
 gi_mode = 2
 mesh = ExtResource("2_3cqaw")
 
 [node name="Body" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 2
 gi_mode = 2
 mesh = ExtResource("3_cqia8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0326192, 0.528943, 0.0256873)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0326192, 0.257898, 0.0256873)
 shape = SubResource("BoxShape3D_x74tc")
 
 [node name="CameraBase" type="Node3D" parent="Body"]
@@ -163,7 +176,7 @@ max_polyphony = 3
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201696, -0.022867, -1.10448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20144, -0.022867, -0.645978)
 amount = 125
 lifetime = 1.25
 mesh = SubResource("QuadMesh_30wks")
@@ -178,7 +191,7 @@ scale_amount_curve = SubResource("Curve_4j5vd")
 color_ramp = SubResource("Gradient_p5xtl")
 
 [node name="BlobShadow" type="Decal" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0.05)
 size = Vector3(1.6, 4, 3)
 texture_albedo = ExtResource("11_3ryw5")
 upper_fade = 2.0

@@ -46,7 +46,7 @@ func timerStart():
 	pass
 func _on_area_3d_body_entered(body: Node3D, road_idx: int) -> void:
 	if is_multiplayer_authority():
-		print("Body:-", body.get_parent())
+		print("Body:-", body.get_parent().name,"-->",road_idx)
 		body.get_parent().set_array[road_idx] = true # Access the player's unique set_array
 
 		if road_idx == 0:

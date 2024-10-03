@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://lln5433hecky"]
+[gd_scene load_steps=26 format=3 uid="uid://lln5433hecky"]
 
 [ext_resource type="Script" path="res://SceneManager.gd" id="1_drcnx"]
 [ext_resource type="PackedScene" uid="uid://c1uai3rvx8hul" path="res://vehicles/car_base.tscn" id="2_1baqk"]
@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://r2cje20xbnn6" path="res://circuits/light_post.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://circuits/road_straight_long.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://circuits/road_curved.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://circuits/road_corner_large_border.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://circuits/road_ramp_long_wall.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bsf5dnxrioqwl" path="res://circuits/road_corner_large_border.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dv3rrnmus60sf" path="res://circuits/road_ramp_long_wall.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://circuits/road_straight_bridge.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://dvi6p6tl1g63f" path="res://circuits/road_straight.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://circuits/grand_stand_covered.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://b5b226par6ah4" path="res://circuits/grand_stand_covered.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://circuits/grand_stand_covered_round.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://circuits/pits_office.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://circuits/pits_office_roof.tscn" id="16"]
@@ -40,6 +40,8 @@ points = PackedVector3Array(100, 0, 100, -100, 0, 100, -100, 0, -100, 100, 0, -1
 [sub_resource type="BoxShape3D" id="17"]
 size = Vector3(4, 0.002, 45)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5x3vp"]
+
 [node name="BahrainCircuit" type="Node3D"]
 script = ExtResource("1_drcnx")
 playerScene = Array[PackedScene]([ExtResource("2_1baqk"), ExtResource("3_fvyiy"), ExtResource("4_tvnwq")])
@@ -52,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, -0.866026, 0.5, 0, -0.5, -0.866026, 0, 12.48
 light_energy = 0.3
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="Mesh" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("3")
@@ -60,6 +63,7 @@ mesh = SubResource("3")
 shape = SubResource("4")
 
 [node name="Bridge" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="Collision" type="CollisionShape3D" parent="Bridge"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 2.55, 37.5)
@@ -67,9 +71,11 @@ shape = SubResource("17")
 
 [node name="BarrierWall" parent="." instance=ExtResource("17")]
 transform = Transform3D(45, 0, 0, 0, 5, 0, 0, 0, 5, -47.5, 2.51, 39.8389)
+collision_layer = 2
 
 [node name="BarrierWall2" parent="." instance=ExtResource("17")]
 transform = Transform3D(45, 0, 0, 0, 5, 0, 0, 0, 5, -47.5, 2.51, 35.7748)
+collision_layer = 2
 
 [node name="RoadStart" parent="." instance=ExtResource("5")]
 
@@ -154,177 +160,235 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.01, 15.0002)
 
 [node name="LightPost_1" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, 0)
+collision_layer = 2
 
 [node name="LightPost_2" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, 0)
+collision_layer = 2
 
 [node name="LightPost_3" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, -10)
+collision_layer = 2
 
 [node name="LightPost_4" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10.7049, 0, -10)
+collision_layer = 2
 
 [node name="LightPost_5" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, -20)
+collision_layer = 2
 
 [node name="LightPost_6" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, -20)
+collision_layer = 2
 
 [node name="LightPost_7" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, -34.0358)
+collision_layer = 2
 
 [node name="LightPost_8" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.7367, 0, -44.4135)
+collision_layer = 2
 
 [node name="LightPost_9" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 25.6297, 0, -34.4871)
+collision_layer = 2
 
 [node name="LightPost_10" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 26.5956, 0, -20)
+collision_layer = 2
 
 [node name="LightPost_11" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 12, 0, -20)
+collision_layer = 2
 
 [node name="LightPost_12" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 28.1025, 0, -10)
+collision_layer = 2
 
 [node name="LightPost_13" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 12, 0, -10)
+collision_layer = 2
 
 [node name="LightPost_14" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 29.1467, 0, 0)
+collision_layer = 2
 
 [node name="LightPost_15" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 12.8171, 0, 0)
+collision_layer = 2
 
 [node name="LightPost_16" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 29.3855, 0, 10)
+collision_layer = 2
 
 [node name="LightPost_17" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 14.1235, 0, 10)
+collision_layer = 2
 
 [node name="LightPost_18" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 29.1428, 0, 17.8785)
+collision_layer = 2
 
 [node name="LightPost_19" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 14.1235, 0, 21.444)
+collision_layer = 2
 
 [node name="LightPost_20" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 30.9891, 0, 25.3801)
+collision_layer = 2
 
 [node name="LightPost_21" parent="." instance=ExtResource("6")]
 transform = Transform3D(3.53553, 0, 3.53553, 0, 5, 0, -3.53553, 0, 3.53553, 16.0678, 0, 27.5001)
+collision_layer = 2
 
 [node name="LightPost_22" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.5, 0, -4.33013, 0, 5, 0, 4.33013, 0, -2.5, 28.8358, 0, 38.7418)
+collision_layer = 2
 
 [node name="LightPost_23" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 16.6875, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_24" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.7367, 0, 31.4749)
+collision_layer = 2
 
 [node name="LightPost_25" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 0.910759, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_26" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -6.43624, 0, 31.4749)
+collision_layer = 2
 
 [node name="LightPost_27" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -12.8567, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_28" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -22.8288, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_29" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -28.3772, 0, 31.4749)
+collision_layer = 2
 
 [node name="LightPost_30" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -33.6196, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_31" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -44.187, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_32" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -52.2432, 0, 31.4749)
+collision_layer = 2
 
 [node name="LightPost_33" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -58.7731, 0, 43.7637)
+collision_layer = 2
 
 [node name="LightPost_34" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -81.6394, 0, 29.8102)
+collision_layer = 2
 
 [node name="LightPost_35" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -65.5642, 0, 31.4749)
+collision_layer = 2
 
 [node name="LightPost_36" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -62.1337, 0, 28.3491)
+collision_layer = 2
 
 [node name="LightPost_37" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -53.0748, 0, 28.3491)
+collision_layer = 2
 
 [node name="LightPost_38" parent="." instance=ExtResource("6")]
 transform = Transform3D(2.5, 0, -4.33013, 0, 5, 0, 4.33013, 0, 2.5, -37.1802, 0, 23.1974)
+collision_layer = 2
 
 [node name="LightPost_39" parent="." instance=ExtResource("6")]
 transform = Transform3D(2.5, 0, 4.33013, 0, 5, 0, -4.33013, 0, 2.5, -22.5377, 0, 23.1974)
+collision_layer = 2
 
 [node name="LightPost_40" parent="." instance=ExtResource("6")]
 transform = Transform3D(2.5, 0, 4.33013, 0, 5, 0, -4.33013, 0, 2.5, -5, 0, 16.504)
+collision_layer = 2
 
 [node name="LightPost_41" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, 10)
+collision_layer = 2
 
 [node name="LightPost_42" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, 10)
+collision_layer = 2
 
 [node name="GrandStandCovered_1" parent="." instance=ExtResource("13")]
 transform = Transform3D(-2.18557e-06, 0, 10, 0, 5, 0, -50, 0, -4.37114e-07, -16.36, 0, 6.37)
+collision_layer = 2
 
 [node name="GrandStandCoveredRound_2" parent="." instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 5, 0, -10, 0, -4.37114e-07, -16.37, 0, -43.634)
+collision_layer = 2
 
 [node name="GrandStandCovered_3" parent="." instance=ExtResource("13")]
 transform = Transform3D(40, 0, 0, 0, 5, 0, 0, 0, 10, -10, 0, -50)
+collision_layer = 2
 
 [node name="GrandStandCoveredRound_4" parent="." instance=ExtResource("14")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 30, 0, -50)
+collision_layer = 2
 
 [node name="GrandStandCovered_5" parent="." instance=ExtResource("13")]
 transform = Transform3D(-4.37114e-06, 0, -10, 0, 5, 0, 100, 0, -4.37114e-07, 36.3662, 0, -43.6339)
+collision_layer = 2
 
 [node name="GrandStandCoveredRound_6" parent="." instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-07, 0, -10, 0, 5, 0, 10, 0, -4.37114e-07, 36.366, 0, 56.3519)
+collision_layer = 2
 
 [node name="GrandStandCovered_7" parent="." instance=ExtResource("13")]
 transform = Transform3D(-40, 0, -8.74228e-07, 0, 5, 0, 3.49691e-06, 0, -10, 30.0001, 0, 62.7182)
+collision_layer = 2
 
 [node name="GrandStandCovered_8" parent="." instance=ExtResource("13")]
 transform = Transform3D(-40, 0, -8.74228e-07, 0, 5, 0, 3.49691e-06, 0, -10, -10, 0, 62.718)
+collision_layer = 2
 
 [node name="GrandStandCovered_9" parent="." instance=ExtResource("13")]
 transform = Transform3D(-36, 0, -1.50996e-06, 0, 5, 0, 5.43585e-06, 0, -10, -50, 0, 62.718)
+collision_layer = 2
 
 [node name="PitsOffice_1" parent="." instance=ExtResource("15")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -26.289, 0, 16.4)
+collision_layer = 2
 
 [node name="PitsOffice_2" parent="." instance=ExtResource("15")]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 5, 0, -10, 0, -4.37114e-07, -86.7328, 0, 26.7857)
+collision_layer = 2
 
 [node name="PitsOffice_3" parent="." instance=ExtResource("15")]
 transform = Transform3D(-1.57361e-06, 0, 10, 0, 5, 0, -36, 0, -4.37114e-07, -86.733, 0, 62.786)
+collision_layer = 2
 
 [node name="PitsOfficeRoof_4" parent="." instance=ExtResource("16")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -36.289, 0, 16.3998)
+collision_layer = 2
 
 [node name="PitsOfficeRoof_5" parent="." instance=ExtResource("16")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -46.289, 0, 16.4)
+collision_layer = 2
 
 [node name="PitsOfficeRoof_6" parent="." instance=ExtResource("16")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -56.289, 0, 16.4)
+collision_layer = 2
 
 [node name="PitsOfficeRoof_7" parent="." instance=ExtResource("16")]
 transform = Transform3D(30, 0, 0, 0, 5, 0, 0, 0, 10, -86.289, 0, 16.4)
+collision_layer = 2
 
 [node name="SpwanPoints" type="Node3D" parent="."]
 transform = Transform3D(-0.00209581, -0.000322491, -0.999998, 8.04301e-05, 1, -0.00032266, 0.999998, -8.11054e-05, -0.00209579, 5.35833, 0, 0)
@@ -336,7 +400,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 4.41815e-11, -4.65661e-10, -1.03455e-10, 
 transform = Transform3D(1, 0, 0, 0, 1, 4.41815e-11, -4.65661e-10, -1.03455e-10, 1, -0.00406772, -0.000625915, 4.57274)
 
 [node name="StartTimer" type="Label3D" parent="."]
-transform = Transform3D(-0.0596117, 0, 1.99911, 0, 2, 0, -1.99911, 0, -0.0596117, -10.3902, 2.21349, 4.96848)
+transform = Transform3D(1.99777, 0, 0.0944919, 0, 2, 0, -0.0944919, 0, 1.99777, 2.42387, 2.21349, -4.03758)
 font_size = 52
 outline_size = 10
 width = 1000.0
@@ -344,9 +408,162 @@ script = ExtResource("18_708b0")
 
 [node name="Timer" type="Timer" parent="StartTimer"]
 
-[node name="Sets" type="Node3D" parent="."]
-
 [node name="Players" type="Node3D" parent="."]
 transform = Transform3D(-0.0219371, 0, -0.999759, 0, 1, 0, 0.999759, 0, -0.0219371, 2.92022, 0, 0)
 
+[node name="Sets" type="Node3D" parent="."]
+
+[node name="Set16" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5406, 0, 8.84319)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set16"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set15" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94109, 0, 17.3105)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set15"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set14" type="Area3D" parent="Sets"]
+transform = Transform3D(0.996835, 0.079503, 0, -0.079503, 0.996835, 0, 0, 0, 1, -14.1566, 0, 22.482)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set14"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.99631, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set13" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7153, -0.638047, 50.7411)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set13"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.23645, 0, 1.66476)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set12" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4493, 0, 48.003)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set12"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.89828, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set11" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9904, 0.220074, 20.6668)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set11"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.16236, 0, 2.02283)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set10" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1482, 1.29475, 31.5471)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set10"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.6332, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set9" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8483, 3.00215, 35.6187)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set9"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.07708, 0, 3.47934)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set8" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5915, 6.64784, 36.1429)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set8"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.76851, 0, 4.38052)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set7" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1807, 0, 34.789)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set7"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.7007, 0, 2.55582)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set6" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5077, 0, 31.7831)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set6"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 1.84998)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set5" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7197, 0, 5.43236)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set5"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.99509, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set4" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1341, 0, -26.6794)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set4"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -9.64194, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set3" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0393, 0, -46.2335)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set3"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 9.26145)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set2" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92979, 0, -30.7047)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set2"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.81853, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set1" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69072, 0, -18.171)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set1"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.23046, 0, 8.55559)
+shape = SubResource("BoxShape3D_5x3vp")
+
+[node name="Set0" type="Area3D" parent="Sets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.36865, 0, 0.0849562)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set0"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 5.02632)
+shape = SubResource("BoxShape3D_5x3vp")
+
 [connection signal="timeout" from="StartTimer/Timer" to="." method="timerStart"]
+[connection signal="body_entered" from="Sets/Set16" to="." method="_on_area_3d_body_entered" binds= [16]]
+[connection signal="body_entered" from="Sets/Set15" to="." method="_on_area_3d_body_entered" binds= [15]]
+[connection signal="body_entered" from="Sets/Set14" to="." method="_on_area_3d_body_entered" binds= [14]]
+[connection signal="body_entered" from="Sets/Set13" to="." method="_on_area_3d_body_entered" binds= [13]]
+[connection signal="body_entered" from="Sets/Set12" to="." method="_on_area_3d_body_entered" binds= [12]]
+[connection signal="body_entered" from="Sets/Set11" to="." method="_on_area_3d_body_entered" binds= [11]]
+[connection signal="body_entered" from="Sets/Set10" to="." method="_on_area_3d_body_entered" binds= [10]]
+[connection signal="body_entered" from="Sets/Set9" to="." method="_on_area_3d_body_entered" binds= [9]]
+[connection signal="body_entered" from="Sets/Set8" to="." method="_on_area_3d_body_entered" binds= [8]]
+[connection signal="body_entered" from="Sets/Set7" to="." method="_on_area_3d_body_entered" binds= [7]]
+[connection signal="body_entered" from="Sets/Set6" to="." method="_on_area_3d_body_entered" binds= [6]]
+[connection signal="body_entered" from="Sets/Set5" to="." method="_on_area_3d_body_entered" binds= [5]]
+[connection signal="body_entered" from="Sets/Set4" to="." method="_on_area_3d_body_entered" binds= [4]]
+[connection signal="body_entered" from="Sets/Set3" to="." method="_on_area_3d_body_entered" binds= [3]]
+[connection signal="body_entered" from="Sets/Set2" to="." method="_on_area_3d_body_entered" binds= [2]]
+[connection signal="body_entered" from="Sets/Set1" to="." method="_on_area_3d_body_entered" binds= [1]]
+[connection signal="body_entered" from="Sets/Set0" to="." method="_on_area_3d_body_entered" binds= [0]]
