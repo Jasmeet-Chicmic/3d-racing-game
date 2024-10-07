@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://v1wsnv8vrbom"]
+[gd_scene load_steps=8 format=3 uid="uid://v1wsnv8vrbom"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_5vcq5"]
+[ext_resource type="PackedScene" uid="uid://dpu5dr6vhqyqi" path="res://track.tscn" id="2_exvqb"]
+[ext_resource type="PackedScene" uid="uid://gtubaiynwf2" path="res://circuits/china_circuit.tscn" id="2_hswpd"]
 [ext_resource type="PackedScene" uid="uid://y05np6685tun" path="res://test scene.tscn" id="2_kd3lc"]
-[ext_resource type="PackedScene" uid="uid://lln5433hecky" path="res://circuits/bahrain_circuit.tscn" id="2_rdyre"]
+[ext_resource type="PackedScene" uid="uid://lln5433hecky" path="res://circuits/bahrain_circuit.tscn" id="2_rs1qi"]
 [ext_resource type="PackedScene" uid="uid://ckvqraq6j1okh" path="res://car_select/car_select.tscn" id="3_stw4s"]
 [ext_resource type="PackedScene" uid="uid://b2gjog7peu5s1" path="res://Result.tscn" id="4_ufhw7"]
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_5vcq5")
-multiplayerScene = ExtResource("2_rdyre")
+multiplayerScene = Array[PackedScene]([ExtResource("2_exvqb"), ExtResource("2_rs1qi"), ExtResource("2_hswpd")])
 
 [node name="CarSelect" parent="." instance=ExtResource("3_stw4s")]
 visible = false

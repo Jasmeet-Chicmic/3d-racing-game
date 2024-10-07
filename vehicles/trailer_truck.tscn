@@ -216,7 +216,6 @@ near = 0.1
 script = ExtResource("4_4yhuf")
 min_distance = 5.0
 max_distance = 7.0
-height = 2.5
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_wi8nx")

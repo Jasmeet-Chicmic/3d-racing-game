@@ -1,12 +1,12 @@
 extends Node3D
-@export var multiplayerScene:PackedScene
+@export var multiplayerScene:Array[PackedScene]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$UI.OnStartGame.connect(onStartGame)
 	pass # Replace with function body.
 
 func onStartGame():
-	var track=multiplayerScene.instantiate()
+	var track=multiplayerScene[1].instantiate()
 	$MultiplayerScene.add_child(track)
 	track.GameEnd.connect(onGameEnd)
 	

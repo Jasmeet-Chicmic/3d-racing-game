@@ -178,7 +178,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.23046, 0, 8.55559)
 shape = SubResource("BoxShape3D_lnwji")
 
 [node name="Set0" type="Area3D" parent="Sets" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.622353, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305234, -0.0581734, -0.406558)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set0" index="0"]
@@ -189,10 +189,10 @@ shape = SubResource("BoxShape3D_lnwji")
 transform = Transform3D(1, -8.04636e-05, -0.00010614, 8.04301e-05, 1, -0.00032266, 0.000106166, 0.000322652, 1, 0, 0, 0)
 
 [node name="SpwanPoint1" type="Node3D" parent="SpwanPoints" index="0" groups=["spawnpoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.14726)
+transform = Transform3D(1, -5.54223e-13, -7.27596e-12, -5.96856e-13, 1, 0, 0, -2.91038e-11, 1, 4.42524e-05, 0.000134489, 3.56408)
 
 [node name="SpwanPoint2" type="Node3D" parent="SpwanPoints" index="1" groups=["spawnpoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.51361)
+transform = Transform3D(1, -5.54223e-13, -7.27596e-12, -5.96856e-13, 1, 0, 0, -2.91038e-11, 1, -1.54986e-05, -4.71021e-05, 6.36763)
 
 [node name="StartTimer" type="Label3D" parent="." index="6"]
 transform = Transform3D(-0.0596117, 0, 1.99911, 0, 2, 0, -1.99911, 0, -0.0596117, -10.3902, 2.21349, 4.96848)

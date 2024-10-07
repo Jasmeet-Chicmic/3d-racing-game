@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfvghmnwapq10" path="res://circuits/fence_curved.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://b5b226par6ah4" path="res://circuits/grand_stand_covered.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://circuits/overhead_round_colored.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://r2cje20xbnn6" path="res://circuits/light_post.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://cp73d7rrcoyfs" path="res://circuits/light_post.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://q6l5lbacs7xw" path="res://circuits/road_start.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://bsf5dnxrioqwl" path="res://circuits/road_corner_large_border.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://dvi6p6tl1g63f" path="res://circuits/road_straight.tscn" id="13"]
@@ -37,10 +37,12 @@ radiance_size = 2
 [sub_resource type="Environment" id="2"]
 resource_local_to_scene = true
 background_mode = 2
+background_energy_multiplier = 1.5
 sky = SubResource("Sky_rspyc")
 tonemap_white = 7.99
 fog_enabled = true
-fog_light_energy = 1.5
+fog_light_color = Color(0.878431, 0.878431, 0.878431, 1)
+fog_light_energy = 0.0
 fog_height = 10.0
 
 [sub_resource type="PlaneMesh" id="1"]
@@ -258,7 +260,7 @@ transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 10, 0,
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 5, 0, 23.369)
 
 [node name="LightPost1" parent="." instance=ExtResource("8")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, 10)
+transform = Transform3D(-2.12728e-07, 1.14702, -4.86666, 5.01379e-08, 4.86666, 1.14702, 5, 0, -2.18557e-07, 10, 2.1779, 10)
 
 [node name="LightPost2" parent="." instance=ExtResource("8")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, 0)
@@ -380,10 +382,10 @@ collision_layer = 2
 transform = Transform3D(-0.00209581, -0.000322491, -0.999998, 8.04301e-05, 1, -0.00032266, 0.999998, -8.11054e-05, -0.00209579, 5.35833, 0, 0)
 
 [node name="SpwanPoint1" type="Node3D" parent="SpwanPoints" groups=["spawnpoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 4.41815e-11, -4.65661e-10, -1.03455e-10, 1, -0.00407985, -0.000627781, 1.2006)
+transform = Transform3D(1, 0, 0, 0, 1, 7.32854e-11, -6.98492e-10, -1.61663e-10, 1, -0.00249737, -0.000384279, 1.95566)
 
 [node name="SpwanPoint2" type="Node3D" parent="SpwanPoints" groups=["spawnpoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 4.41815e-11, -4.65661e-10, -1.03455e-10, 1, -0.00406772, -0.000625915, 4.57274)
+transform = Transform3D(1, 0, 0, 0, 1, 7.32854e-11, -6.98492e-10, -1.61663e-10, 1, -0.00598187, -0.000920453, 3.65942)
 
 [node name="StartTimer" type="Label3D" parent="."]
 transform = Transform3D(1.99777, 0, 0.0944919, 0, 2, 0, -0.0944919, 0, 1.99777, 2.42387, 2.21349, -4.03758)
@@ -480,7 +482,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.81853, 0, 5.02632)
 shape = SubResource("BoxShape3D_we6o1")
 
 [node name="Set1" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69072, 0, -18.171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69072, 0, -18.1714)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set1"]
@@ -488,7 +490,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.23046, 0, 8.55559)
 shape = SubResource("BoxShape3D_we6o1")
 
 [node name="Set0" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5158, 0, -8.81905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5158, 0, -14.0209)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set0"]

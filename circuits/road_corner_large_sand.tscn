@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" path="res://circuits/road_corner_large_sand.tres" id="1"]
 [ext_resource type="ArrayMesh" path="res://circuits/road_corner_large_sand_inner.tres" id="2"]
-[ext_resource type="ArrayMesh" path="res://circuits/road_corner_large.tres" id="3"]
+[ext_resource type="ArrayMesh" uid="uid://wcsw2ntrewub" path="res://circuits/road_corner_large.tres" id="3"]
 [ext_resource type="ArrayMesh" path="res://circuits/road_corner_large_wall.tres" id="4"]
 [ext_resource type="ArrayMesh" path="res://circuits/road_corner_large_wall_inner.tres" id="5"]
 

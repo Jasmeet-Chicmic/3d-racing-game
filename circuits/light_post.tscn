@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://r2cje20xbnn6"]
+[gd_scene load_steps=3 format=3 uid="uid://cp73d7rrcoyfs"]
 
 [ext_resource type="ArrayMesh" path="res://circuits/light_post.tres" id="1"]
 
@@ -15,12 +15,9 @@ mesh = ExtResource("1")
 shape = SubResource("1")
 
 [node name="Light" type="SpotLight3D" parent="."]
-transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, 0, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 0.751, 0)
+transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 0.751, 0)
 light_color = Color(0.980392, 0.964706, 0.901961, 1)
-light_energy = 14.099
-light_indirect_energy = 13.815
-light_volumetric_fog_energy = 13.967
-light_size = 0.341
-light_specular = 5.732
+light_energy = 16.0
 spot_range = 10.0
-spot_angle_attenuation = 10.0
+spot_attenuation = 0.0
+spot_angle_attenuation = 8.0

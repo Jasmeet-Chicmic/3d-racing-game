@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drinprblemj5u" path="res://vehicles/trailer_truck.tscn" id="3_fvyiy"]
 [ext_resource type="PackedScene" uid="uid://bh7765vrq5muf" path="res://vehicles/tow_truck.tscn" id="4_tvnwq"]
 [ext_resource type="PackedScene" uid="uid://q6l5lbacs7xw" path="res://circuits/road_start.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://r2cje20xbnn6" path="res://circuits/light_post.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://cp73d7rrcoyfs" path="res://circuits/light_post.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://circuits/road_straight_long.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://circuits/road_curved.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://bsf5dnxrioqwl" path="res://circuits/road_corner_large_border.tscn" id="9"]
@@ -71,11 +71,9 @@ shape = SubResource("17")
 
 [node name="BarrierWall" parent="." instance=ExtResource("17")]
 transform = Transform3D(45, 0, 0, 0, 5, 0, 0, 0, 5, -47.5, 2.51, 39.8389)
-collision_layer = 2
 
 [node name="BarrierWall2" parent="." instance=ExtResource("17")]
 transform = Transform3D(45, 0, 0, 0, 5, 0, 0, 0, 5, -47.5, 2.51, 35.7748)
-collision_layer = 2
 
 [node name="RoadStart" parent="." instance=ExtResource("5")]
 
@@ -160,175 +158,132 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.01, 15.0002)
 
 [node name="LightPost_1" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, 0)
-collision_layer = 2
 
 [node name="LightPost_2" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, 0)
-collision_layer = 2
 
 [node name="LightPost_3" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, -10)
-collision_layer = 2
 
 [node name="LightPost_4" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10.7049, 0, -10)
-collision_layer = 2
 
 [node name="LightPost_5" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, -20)
-collision_layer = 2
 
 [node name="LightPost_6" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, -20)
-collision_layer = 2
 
 [node name="LightPost_7" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, -34.0358)
-collision_layer = 2
 
 [node name="LightPost_8" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.7367, 0, -44.4135)
-collision_layer = 2
 
 [node name="LightPost_9" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 25.6297, 0, -34.4871)
-collision_layer = 2
 
 [node name="LightPost_10" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 26.5956, 0, -20)
-collision_layer = 2
 
 [node name="LightPost_11" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 12, 0, -20)
-collision_layer = 2
 
 [node name="LightPost_12" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 28.1025, 0, -10)
-collision_layer = 2
 
 [node name="LightPost_13" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 12, 0, -10)
-collision_layer = 2
 
 [node name="LightPost_14" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 29.1467, 0, 0)
-collision_layer = 2
 
 [node name="LightPost_15" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 12.8171, 0, 0)
-collision_layer = 2
 
 [node name="LightPost_16" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 29.3855, 0, 10)
-collision_layer = 2
 
 [node name="LightPost_17" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 14.1235, 0, 10)
-collision_layer = 2
 
 [node name="LightPost_18" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 29.1428, 0, 17.8785)
-collision_layer = 2
 
 [node name="LightPost_19" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 14.1235, 0, 21.444)
-collision_layer = 2
 
 [node name="LightPost_20" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 30.9891, 0, 25.3801)
-collision_layer = 2
 
 [node name="LightPost_21" parent="." instance=ExtResource("6")]
 transform = Transform3D(3.53553, 0, 3.53553, 0, 5, 0, -3.53553, 0, 3.53553, 16.0678, 0, 27.5001)
-collision_layer = 2
 
 [node name="LightPost_22" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.5, 0, -4.33013, 0, 5, 0, 4.33013, 0, -2.5, 28.8358, 0, 38.7418)
-collision_layer = 2
 
 [node name="LightPost_23" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 16.6875, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_24" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.7367, 0, 31.4749)
-collision_layer = 2
 
 [node name="LightPost_25" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 0.910759, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_26" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -6.43624, 0, 31.4749)
-collision_layer = 2
 
 [node name="LightPost_27" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -12.8567, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_28" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -22.8288, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_29" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -28.3772, 0, 31.4749)
-collision_layer = 2
 
 [node name="LightPost_30" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -33.6196, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_31" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -44.187, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_32" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -52.2432, 0, 31.4749)
-collision_layer = 2
 
 [node name="LightPost_33" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -58.7731, 0, 43.7637)
-collision_layer = 2
 
 [node name="LightPost_34" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -81.6394, 0, 29.8102)
-collision_layer = 2
 
 [node name="LightPost_35" parent="." instance=ExtResource("6")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -65.5642, 0, 31.4749)
-collision_layer = 2
 
 [node name="LightPost_36" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -62.1337, 0, 28.3491)
-collision_layer = 2
 
 [node name="LightPost_37" parent="." instance=ExtResource("6")]
 transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, -53.0748, 0, 28.3491)
-collision_layer = 2
 
 [node name="LightPost_38" parent="." instance=ExtResource("6")]
 transform = Transform3D(2.5, 0, -4.33013, 0, 5, 0, 4.33013, 0, 2.5, -37.1802, 0, 23.1974)
-collision_layer = 2
 
 [node name="LightPost_39" parent="." instance=ExtResource("6")]
 transform = Transform3D(2.5, 0, 4.33013, 0, 5, 0, -4.33013, 0, 2.5, -22.5377, 0, 23.1974)
-collision_layer = 2
 
 [node name="LightPost_40" parent="." instance=ExtResource("6")]
 transform = Transform3D(2.5, 0, 4.33013, 0, 5, 0, -4.33013, 0, 2.5, -5, 0, 16.504)
-collision_layer = 2
 
 [node name="LightPost_41" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -5, 0, 10)
-collision_layer = 2
 
 [node name="LightPost_42" parent="." instance=ExtResource("6")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 10, 0, 10)
-collision_layer = 2
 
 [node name="GrandStandCovered_1" parent="." instance=ExtResource("13")]
 transform = Transform3D(-2.18557e-06, 0, 10, 0, 5, 0, -50, 0, -4.37114e-07, -16.36, 0, 6.37)
-collision_layer = 2
 
 [node name="GrandStandCoveredRound_2" parent="." instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 5, 0, -10, 0, -4.37114e-07, -16.37, 0, -43.634)
@@ -336,7 +291,6 @@ collision_layer = 2
 
 [node name="GrandStandCovered_3" parent="." instance=ExtResource("13")]
 transform = Transform3D(40, 0, 0, 0, 5, 0, 0, 0, 10, -10, 0, -50)
-collision_layer = 2
 
 [node name="GrandStandCoveredRound_4" parent="." instance=ExtResource("14")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 30, 0, -50)
@@ -344,7 +298,6 @@ collision_layer = 2
 
 [node name="GrandStandCovered_5" parent="." instance=ExtResource("13")]
 transform = Transform3D(-4.37114e-06, 0, -10, 0, 5, 0, 100, 0, -4.37114e-07, 36.3662, 0, -43.6339)
-collision_layer = 2
 
 [node name="GrandStandCoveredRound_6" parent="." instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-07, 0, -10, 0, 5, 0, 10, 0, -4.37114e-07, 36.366, 0, 56.3519)
@@ -352,15 +305,12 @@ collision_layer = 2
 
 [node name="GrandStandCovered_7" parent="." instance=ExtResource("13")]
 transform = Transform3D(-40, 0, -8.74228e-07, 0, 5, 0, 3.49691e-06, 0, -10, 30.0001, 0, 62.7182)
-collision_layer = 2
 
 [node name="GrandStandCovered_8" parent="." instance=ExtResource("13")]
 transform = Transform3D(-40, 0, -8.74228e-07, 0, 5, 0, 3.49691e-06, 0, -10, -10, 0, 62.718)
-collision_layer = 2
 
 [node name="GrandStandCovered_9" parent="." instance=ExtResource("13")]
 transform = Transform3D(-36, 0, -1.50996e-06, 0, 5, 0, 5.43585e-06, 0, -10, -50, 0, 62.718)
-collision_layer = 2
 
 [node name="PitsOffice_1" parent="." instance=ExtResource("15")]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -26.289, 0, 16.4)
@@ -394,10 +344,10 @@ collision_layer = 2
 transform = Transform3D(-0.00209581, -0.000322491, -0.999998, 8.04301e-05, 1, -0.00032266, 0.999998, -8.11054e-05, -0.00209579, 5.35833, 0, 0)
 
 [node name="SpwanPoint1" type="Node3D" parent="SpwanPoints" groups=["spawnpoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 4.41815e-11, -4.65661e-10, -1.03455e-10, 1, -0.00407985, -0.000627781, 1.2006)
+transform = Transform3D(1, 0, 0, 0, 1, 7.32854e-11, -6.98492e-10, -1.61663e-10, 1, -0.00243459, -0.000374619, 1.98562)
 
 [node name="SpwanPoint2" type="Node3D" parent="SpwanPoints" groups=["spawnpoint"]]
-transform = Transform3D(1, 0, 0, 0, 1, 4.41815e-11, -4.65661e-10, -1.03455e-10, 1, -0.00406772, -0.000625915, 4.57274)
+transform = Transform3D(1, 0, 0, 0, 1, 7.32854e-11, -6.98492e-10, -1.61663e-10, 1, -0.0059731, -0.000919102, 3.66361)
 
 [node name="StartTimer" type="Label3D" parent="."]
 transform = Transform3D(1.99777, 0, 0.0944919, 0, 2, 0, -0.0944919, 0, 1.99777, 2.42387, 2.21349, -4.03758)
@@ -502,7 +452,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 1.84998)
 shape = SubResource("BoxShape3D_5x3vp")
 
 [node name="Set5" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7197, 0, 5.43236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7197, 0, -9.58496)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set5"]
@@ -510,7 +460,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -3.99509, 0, 5.02632)
 shape = SubResource("BoxShape3D_5x3vp")
 
 [node name="Set4" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1341, 0, -26.6794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1485, 0, -29.505)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set4"]
@@ -518,7 +468,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -9.64194, 0, 5.02632)
 shape = SubResource("BoxShape3D_5x3vp")
 
 [node name="Set3" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0393, 0, -46.2335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3477, 0, -44.9532)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set3"]
@@ -526,7 +476,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.23023, 0, 9.26145)
 shape = SubResource("BoxShape3D_5x3vp")
 
 [node name="Set2" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92979, 0, -30.7047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.47069, 0, -38.4173)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set2"]
@@ -534,7 +484,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.81853, 0, 5.02632)
 shape = SubResource("BoxShape3D_5x3vp")
 
 [node name="Set1" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69072, 0, -18.171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69072, 0, -28.3094)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set1"]
@@ -542,7 +492,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.23046, 0, 8.55559)
 shape = SubResource("BoxShape3D_5x3vp")
 
 [node name="Set0" type="Area3D" parent="Sets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.36865, 0, 0.0849562)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.36865, 0, -13.9608)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sets/Set0"]
