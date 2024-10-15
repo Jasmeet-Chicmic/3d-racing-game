@@ -42,11 +42,11 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	pass
 	
-func _input(_event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	pass
-	#if event.is_action_pressed(&"cycle_camera"):
-		#camera_type = wrapi(camera_type + 1, 0, CameraType.MAX) as CameraType
-		#update_camera()
+	if event.is_action_pressed(&"cycle_camera"):
+		camera_type = wrapi(camera_type + 1, 0, CameraType.MAX) as CameraType
+		update_camera()
 
 
 func _physics_process(_delta: float) -> void:

@@ -6,6 +6,7 @@ var socket :NakamaSocket
 var createdMatch
 var multiplayerBridge
 var vehicleId=0
+var account;
 static var Players={}
 signal OnStartGame()
 
@@ -35,7 +36,7 @@ func onSocketReceivedError():
 	pass
 
 func onSocketReceivedMatchPresence(presence:NakamaRTAPI.MatchPresenceEvent):
-	#print("Socket Received Match Presence", presence) 
+	print("Socket Received Match Presence", presence) 
 	pass
 
 func onSocketReceivedMatchState(state:NakamaRTAPI.MatchData):
@@ -57,11 +58,10 @@ func _on_login_button_button_down() -> void:
 	socket.received_match_state.connect(onSocketReceivedMatchState)
 	
 	updateUserInfo($Panel2/EmailEdit.text, $Panel2/EmailEdit.text)
-	var account = await client.get_account_async(session)
+	account = await client.get_account_async(session)
 	print("=====Test>", account)
 	$Panel/UserAccountText.text = account.user.username
 	$Panel/DisplaynameText.text = account.user.display_name
-	
 	setupMultiPlayerbridge()
 	_on_join_create_button_button_down()
 	hide()
@@ -102,6 +102,7 @@ func onPeerConnected(id):
 		#print("new id",multiplayer.get_unique_id())
 		Players[multiplayer.get_unique_id()] = {
 			"name" : multiplayer.get_unique_id(),
+			"display_name":account.user.display_name,
 			"ready" : 0,
 			"vehicleId":vehicleId
 		}
@@ -173,11 +174,12 @@ func onMatchMakerMatched(match):
 	#print("Matchmaker matched successfully", createdMatch)
 
 @rpc("any_peer", "call_local")
-func Ready(id,vehicleId):
+func Ready(id,vehicleId,name):
 	#print("Id==>",id,"=>Player==>",Players)
 	
 	Players[id].ready = 1
 	Players[id].vehicleId=vehicleId
+	Players[id].display_name=name
 	#print("Player", id, "is ready")
 	if multiplayer.is_server():
 		var readyPlayers = 0
@@ -197,7 +199,7 @@ func StartGame():
 
 func _on_start_button_down() -> void:
 	$"../CarSelect".waitingButtonStatusChange()
-	Ready.rpc(multiplayer.get_unique_id(),vehicleId)
+	Ready.rpc(multiplayer.get_unique_id(),vehicleId,account.user.display_name)
 	#print("Player", multiplayer.get_unique_id(), "ready")
 
 func _on_session_end():

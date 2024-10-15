@@ -8,6 +8,7 @@ const BRAKE_STRENGTH = 2.0
 @onready var previous_speed = body.linear_velocity.length()
 var _steer_target = 0.0
 var set_array = []
+var playerDetails;
 @onready var desired_engine_pitch: float = $Body/EngineSound.pitch_scale
 
 func _enter_tree() -> void:

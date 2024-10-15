@@ -23,8 +23,9 @@ func _ready():
 	for i in keys:
 		#print("My Id",NakamaMultiplayer.Players[i].vehicleId)
 		var instancedPlayer = playerScene[NakamaMultiplayer.Players[i].vehicleId].instantiate()
-		#print("Inst",instancedPlayer)
+		print("Inst-------",NakamaMultiplayer.Players[i])
 		instancedPlayer.name = str(NakamaMultiplayer.Players[i].name)
+		instancedPlayer.playerDetails=NakamaMultiplayer.Players[i]
 		
 		instancedPlayer.set_array = set_array.duplicate() # Assign a unique set_array to each player
 		$Players.add_child(instancedPlayer)
@@ -58,7 +59,7 @@ func _on_area_3d_body_entered(body: Node3D, road_idx: int) -> void:
 
 			if all_true:
 				print("Win!  Body:", body.get_parent().name)
-				gameEnd.rpc(body.get_parent().name)
+				gameEnd.rpc(body.get_parent().playerDetails.display_name)
 
 @rpc("any_peer", "call_local")
 func gameEnd(winner):
