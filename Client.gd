@@ -12,6 +12,8 @@ signal OnStartGame()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Player empty On Scene Start (Because of Issue Raise On reload)
+	Players={}
 	$"../CarSelect".VechileSelected.connect(selectedVehicle)
 	$"../CarSelect".StartGame.connect(_on_start_button_down)
 	$"../Control".reload.connect(_on_session_end)
@@ -36,7 +38,7 @@ func onSocketReceivedError():
 	pass
 
 func onSocketReceivedMatchPresence(presence:NakamaRTAPI.MatchPresenceEvent):
-	print("Socket Received Match Presence", presence) 
+	#print("Socket Received Match Presence", presence) 
 	pass
 
 func onSocketReceivedMatchState(state:NakamaRTAPI.MatchData):
@@ -59,7 +61,6 @@ func _on_login_button_button_down() -> void:
 	
 	updateUserInfo($Panel2/EmailEdit.text, $Panel2/EmailEdit.text)
 	account = await client.get_account_async(session)
-	print("=====Test>", account)
 	$Panel/UserAccountText.text = account.user.username
 	$Panel/DisplaynameText.text = account.user.display_name
 	setupMultiPlayerbridge()
